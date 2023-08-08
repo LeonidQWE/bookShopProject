@@ -1,7 +1,14 @@
+import { ReactNode} from 'react';
 import './Main.css';
 
-export function Main () {
+interface MainProps {
+  children: ReactNode;
+}
+
+export function Main (props: MainProps): JSX.Element {
   return (
-    <main className='main'></main>
+    <main className='main'>
+      {props.children}
+    </main>
   )
 }
