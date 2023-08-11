@@ -1,4 +1,3 @@
-// need to fix
 import { configureStore } from "@reduxjs/toolkit"
 import { newBooksReducer } from "./newBooksSlice"
 
@@ -7,3 +6,5 @@ export const store = configureStore({
     newBooks: newBooksReducer,
   }
 })
+
+export type RootState = ReturnType<typeof store.getState>

@@ -1,7 +1,7 @@
 import { client } from "../utils/client";
 import { newBooksEndPoint } from "../api";
 
-interface Book {
+export interface Book {
   title: string
   subtitle: string
   isbn13: string
@@ -10,13 +10,14 @@ interface Book {
   url: string
 }
 
-interface Books {
+export interface Books {
+  error: string
   total: string
   books: Book[]
 }
 
 export const requestNewBooks = async (): Promise<Books> => {
   const { data } = await client.get(newBooksEndPoint);
-  console.log(data);
-  return data;
+  // console.log(data);
+  return data as Books
 }

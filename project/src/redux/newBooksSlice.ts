@@ -1,26 +1,16 @@
-// need to fix
-
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
-import { requestNewBooks } from "../services/books"
-
-interface Books {
-  total: string,
-  books: []
-}
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"
+import { requestNewBooks, Book } from "../services/books"
 
 interface NewBooksState {
-  newBooks: Books[]
+  newBooks: Book[]
   loading: boolean
   error: boolean
 }
 
-
-
-const fetchNewBooks = createAsyncThunk( 'newBooks/fetchNewBooks', async () => {
-  const response = await requestNewBooks()
-  return response as Books
-  // const { books } = await requestNewBooks()
-  // return { books }
+export const fetchNewBooks = createAsyncThunk( 'newBooks/fetchNewBooks', async () => {
+  const { books } = await requestNewBooks()
+  console.log(books);
+  return books as Book[]
 })
 
 const newBooksSlice = createSlice({
@@ -37,9 +27,9 @@ const newBooksSlice = createSlice({
     builder.addCase(fetchNewBooks.pending, state => {
       state.loading = true
     })
-    builder.addCase(fetchNewBooks.fulfilled, (state, action) => {
+    builder.addCase(fetchNewBooks.fulfilled, (state, action: PayloadAction<Book[]>) => {
       state.loading = false
-      state.newBooks = action.payload.books
+      state.newBooks = action.payload
     })
     builder.addCase(fetchNewBooks.rejected, state => {
       state.loading = false
@@ -48,6 +38,5 @@ const newBooksSlice = createSlice({
   }
 })
 
-export { fetchNewBooks }
 export const newBooksReducer = newBooksSlice.reducer
 
