@@ -18,6 +18,5 @@ export interface Books {
 
 export const requestNewBooks = async (): Promise<Books> => {
   const { data } = await client.get(newBooksEndPoint);
-  // console.log(data);
   return data as Books
 }

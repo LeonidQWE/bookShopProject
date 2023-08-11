@@ -9,7 +9,6 @@ interface NewBooksState {
 
 export const fetchNewBooks = createAsyncThunk( 'newBooks/fetchNewBooks', async () => {
   const { books } = await requestNewBooks()
-  console.log(books);
   return books as Book[]
 })
 
