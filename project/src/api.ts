@@ -1,3 +1,4 @@
 const newBooksEndPoint = '/new'
+const bookEndPoint = '/books'
 
-export { newBooksEndPoint }
+export { newBooksEndPoint, bookEndPoint }
