@@ -1,7 +1,7 @@
 import { client } from "../utils/client";
 import { newBooksEndPoint, bookEndPoint } from "../api";
 
-export interface Book {
+export type Book = {
   title: string
   subtitle: string
   isbn13: string
@@ -10,13 +10,13 @@ export interface Book {
   url: string
 }
 
-export interface Books {
+export type Books = {
   error: string
   total: string
   books: Book[]
 }
 
-export interface BookResponse {
+export type BookResponse = {
   error: string
   title: string
   subtitle: string

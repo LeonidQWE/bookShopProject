@@ -10,6 +10,8 @@ import { RootState } from '../../redux/store'
 import { Book } from '../Book'
 import { Loading } from '../Loading'
 import { Error } from '../Error'
+import { Title } from '../Title'
+import { Container } from '../Container'
 
 export function Layout() {
   const dispatch = useDispatch<any>()  //TODO: fix any
@@ -47,21 +49,24 @@ export function Layout() {
     return <Error>Data upload interrupted! Try again!</Error>
   }
 
-  function renderBooks () {
-    return booksWithDetails.map((book) =>  <Book key={book.payload.isbn13} data={book.payload} />)
+  function renderBooks() {
+    return booksWithDetails.map((book) => <Book key={book.payload.isbn13} data={book.payload} />)
   }
 
   return (
     <div className="layout">
-      <Header/>
+      <Header />
       <Main>
-      {loading || loadingDetails  ? (
-          <Loading />
-        ) : (
-          newBooks.length && renderBooks()
-      )}
+        <Title>New Releases Books</Title>
+        <Container className='container-flex'>
+          {loading || loadingDetails ? (
+            <Loading />
+          ) : (
+            newBooks.length && renderBooks()
+          )}
+        </Container>
       </Main>
-      <Footer/>
+      <Footer />
     </div>
   )
 }
