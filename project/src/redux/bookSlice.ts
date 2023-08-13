@@ -2,39 +2,40 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { requestBookByIsbn13, BookResponse } from "../services/books";
 
 interface BookState {
-  book: BookResponse
-  loading: boolean
-  error: boolean
+  bookWithDetails: BookResponse
+  loadingDetails: boolean
+  errorDetails: boolean
 }
 
-export const fetchBookByIsbn13 = createAsyncThunk('book/fetchBookByIsbn13', async (isbn13: string) => {
-  const book = await requestBookByIsbn13(isbn13)
-  return book as BookResponse
+export const fetchBookByIsbn13 = createAsyncThunk('bookWithDetails/fetchBookByIsbn13', async (isbn13: string) => {
+  const bookWithDetails = await requestBookByIsbn13(isbn13)
+  return bookWithDetails as BookResponse
 })
 
 const bookSlice = createSlice({
-  name: 'book',
+  name: 'bookWithDetails',
   initialState: {
-    book: {},
-    loading: false,
-    error: false
+    bookWithDetails: {},
+    loadingDetails: false,
+    errorDetails: false
   } as BookState,
 
   reducers: {},
 
   extraReducers: builder => {
     builder.addCase(fetchBookByIsbn13.pending, state => {
-      state.loading = true
+      state.loadingDetails = true
     })
     builder.addCase(fetchBookByIsbn13.fulfilled, (state, action: PayloadAction<BookResponse>) => {
-      state.loading = false
-      state.book = action.payload
+      state.loadingDetails = false
+      state.bookWithDetails = action.payload
     })
     builder.addCase(fetchBookByIsbn13.rejected, state => {
-      state.loading = false
-      state.error = true
+      state.loadingDetails = false
+      state.errorDetails = true
     })
   }
 })
 
 export const bookReducer = bookSlice.reducer
+
