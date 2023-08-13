@@ -8,13 +8,14 @@ import { fetchBookByIsbn13 } from '../../redux/bookSlice'
 import { useEffect, useState } from 'react'
 import { RootState } from '../../redux/store'
 import { Book } from '../Book'
+import { Loading } from '../Loading'
+import { Error } from '../Error'
 
 export function Layout() {
   const dispatch = useDispatch<any>()  //TODO: fix any
   const { newBooks, loading, error } = useSelector((state: RootState) => state.newBooks)
-  // const { bookWithDetails, loadingDetails, errorDetails } = useSelector((state: RootState) => state.bookWithDetails)
-  const [booksWithDetails, setBooksWithDetails] = useState<Book[]>([]);
-
+  const [booksWithDetails, setBooksWithDetails] = useState([]);
+  const [loadingDetails, setLoadingDetails] = useState(false);
 
   useEffect(() => {
     dispatch(fetchNewBooks());
@@ -22,27 +23,43 @@ export function Layout() {
 
   useEffect(() => {
     const fetchBooksDetails = async () => {
-      const bookDetails = await Promise.all(
-        newBooks.map((book) => dispatch(fetchBookByIsbn13(book.isbn13)))
-      );
-      setBooksWithDetails(bookDetails);
+      setLoadingDetails(true)
+
+      try {
+        const bookDetailsPromises = newBooks.map((book) => dispatch(fetchBookByIsbn13(book.isbn13)))
+        const bookDetails = await Promise.all(bookDetailsPromises)
+        setBooksWithDetails(bookDetails)
+      } catch (error) {
+        alert(error)
+      } finally {
+        setLoadingDetails(false);
+      }
     };
 
     fetchBooksDetails();
   }, [dispatch, newBooks]);
 
-  booksWithDetails.map((book) => console.log(book.payload))
+  if (loading) {
+    return <Loading />
+  }
+
+  if (error) {
+    return <Error>Data upload interrupted! Try again!</Error>
+  }
 
   function renderBooks () {
     return booksWithDetails.map((book) =>  <Book key={book.payload.isbn13} data={book.payload} />)
   }
 
-
   return (
     <div className="layout">
       <Header/>
       <Main>
-        {newBooks.length && renderBooks()}
+      {loading || loadingDetails  ? (
+          <Loading />
+        ) : (
+          newBooks.length && renderBooks()
+      )}
       </Main>
       <Footer/>
     </div>
