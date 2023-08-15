@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom"
 import { Layout } from "./components/Layout"
 import { Books } from "./pages/Books"
 import { Bookmarks } from "./pages/Bookmarks"
+import { UserPage } from "./pages/UserPage"
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ export const router = createBrowserRouter([
       {
         path: '/bookmarks',
         element: <Bookmarks />
+      },
+      {
+        path: '/user_page',
+        element: <UserPage />
       }
     ]
   }

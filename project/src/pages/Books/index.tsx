@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useState, useEffect } from "react"
 
-import { fetchNewBooks } from "../redux/newBooksSlice"
-import { fetchBookByIsbn13 } from "../redux/bookSlice"
-import { RootState } from "../redux/store"
-import { Title } from "../components/Title"
-import { Container } from "../components/Container"
-import { Loading } from "../components/Loading"
-import { Error } from "../components/Error"
-import { Book } from "../components/Book"
+import { fetchNewBooks } from "../../redux/newBooksSlice"
+import { fetchBookByIsbn13 } from "../../redux/bookSlice"
+import { RootState } from "../../redux/store"
+import { Title } from "../../components/Title"
+import { Container } from "../../components/Container"
+import { Loading } from "../../components/Loading"
+import { Error } from "../../components/Error"
+import { Book } from "../../components/Book"
 
 export function Books() {
   const dispatch = useDispatch<any>()  //TODO: fix any

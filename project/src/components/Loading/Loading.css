@@ -1,3 +1,9 @@
+.loading-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .loading-message__spinner {
   margin-left: 20px;
   width: 40px;

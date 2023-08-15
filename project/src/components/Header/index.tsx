@@ -1,6 +1,9 @@
+import { NavLink } from "react-router-dom"
+
 import favorite from '../../images/favorite.svg'
 import basket from '../../images/basket.svg'
 import user from '../../images/user.svg'
+
 import './Header.css'
 
 export function Header() {
@@ -9,9 +12,9 @@ export function Header() {
       <span className='header__logo'>bookstore</span>
       <input className='header__search' placeholder='Search' type="text" />
       <div>
-        <img src={favorite}></img>
+        <NavLink to='/bookmarks'><img src={favorite}></img></NavLink>
         <img src={basket}></img>
-        <img src={user}></img>
+        <NavLink to='/user_page'><img src={user}></img></NavLink>
       </div>
     </header>
   )
