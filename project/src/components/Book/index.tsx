@@ -1,3 +1,5 @@
+import { Rating } from '../Rating'
+
 import './Book.css'
 
 type BookProps = {
@@ -30,7 +32,7 @@ export function Book({ data }: BookProps ): JSX.Element {  //TODO: fix any
       </div>
       <div className="book__footer">
         <span className="book__price">{data.price}</span>
-        <span className="book__rating">{data.rating}</span>
+        <Rating rating={data.rating} />
       </div>
     </div>
   )

@@ -1,0 +1,31 @@
+import activeStar from '../../images/activeStar.svg'
+import mutedStar from '../../images/mutedStar.svg'
+
+import './Rating.css'
+
+interface RatingProps {
+  rating: string
+}
+
+export function Rating ({ rating }: RatingProps): JSX.Element {
+  const parsedRating = parseInt(rating, 10)
+
+  const starRating = [
+    mutedStar,
+    activeStar,
+    activeStar,
+    activeStar,
+    activeStar,
+  ]
+
+  const stars = Array.from({ length: 5 }, (_, index) => (
+    <img
+      className="star"
+      key={index}
+      src={starRating[index >= parsedRating ? 0 : 1]}
+      alt={index >= parsedRating ? 'Muted Star' : 'Active Star'}
+    />
+  ))
+
+  return <div>{stars}</div>
+}
