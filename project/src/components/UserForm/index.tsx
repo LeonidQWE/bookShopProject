@@ -1,13 +1,13 @@
 import { ReactNode } from 'react'
-import './UserForm.css'
 
 type UserFormProps = {
   children: ReactNode
+  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void
 }
 
-export function UserForm ({ children }: UserFormProps): React.ReactElement {
+export function UserForm ({ children, onSubmit }: UserFormProps): React.ReactElement {
   return (
-    <form action="" className="user-form">
+    <form action="" className="user-form" onSubmit={onSubmit}>
       {children}
     </form>
   )

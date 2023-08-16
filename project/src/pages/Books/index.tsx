@@ -10,7 +10,6 @@ import { Container } from "../../components/Container"
 import { Loading } from "../../components/Loading"
 import { Error } from "../../components/Error"
 import { Book } from "../../components/Book"
-import { BookResponse } from "../../services/books"
 
 export function Books() {
   const dispatch = useAppDispatch()  //TODO: fix any
@@ -28,14 +27,15 @@ export function Books() {
 
       try {
         const bookDetailsPromises = newBooks.map((book) => dispatch(fetchBookByIsbn13(book.isbn13)))
+        console.log(bookDetailsPromises)
         const bookDetails = await Promise.all(bookDetailsPromises)
         setBooksWithDetails(bookDetails)
       } catch (error) {
         alert(error)
       } finally {
-        setLoadingDetails(false);
+        setLoadingDetails(false)
       }
-    };
+    }
 
     fetchBooksDetails();
   }, [dispatch, newBooks]);

@@ -1,9 +1,10 @@
 import { FromInput } from "../../components/FormInput"
 import { Button } from "../../components/Button"
+import { UserForm } from "../../components/UserForm"
 
 export function SignUp() {
   return (
-    <>
+    <UserForm>
       <FromInput
         type="text"
         placeholder="Your name"
@@ -25,6 +26,6 @@ export function SignUp() {
         id="signUpConfirmPassword"
         htmlFor="signUpConfirmPassword">Confirm password</FromInput>
       <Button type="submit">Sign Up</Button>
-    </>
+    </UserForm>
   )
 }
