@@ -29,6 +29,7 @@ export function Books() {
         const bookDetailsPromises = newBooks.map((book) => dispatch(fetchBookByIsbn13(book.isbn13)))
         console.log(bookDetailsPromises)
         const bookDetails = await Promise.all(bookDetailsPromises)
+        console.log(bookDetails)
         setBooksWithDetails(bookDetails)
       } catch (error) {
         alert(error)

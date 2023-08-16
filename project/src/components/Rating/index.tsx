@@ -13,9 +13,6 @@ export function Rating ({ rating }: RatingProps): JSX.Element {
   const starRating = [
     mutedStar,
     activeStar,
-    activeStar,
-    activeStar,
-    activeStar,
   ]
 
   const stars = Array.from({ length: 5 }, (_, index) => (
