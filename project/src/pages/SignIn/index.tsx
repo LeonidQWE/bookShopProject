@@ -1,4 +1,5 @@
 import { FromInput } from "../../components/FormInput"
+import { Button } from "../../components/Button"
 
 export function SignIn() {
   return (
@@ -13,6 +14,7 @@ export function SignIn() {
         placeholder="Your password"
         id="signInPassword"
         htmlFor="signInPassword">Password</FromInput>
+      <Button type="submit">Sign In</Button>
     </>
   )
 }

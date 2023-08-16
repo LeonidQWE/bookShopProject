@@ -1,4 +1,5 @@
 import { FromInput } from "../../components/FormInput"
+import { Button } from "../../components/Button"
 
 export function SignUp() {
   return (
@@ -23,6 +24,7 @@ export function SignUp() {
         placeholder="Confirm your password"
         id="signUpConfirmPassword"
         htmlFor="signUpConfirmPassword">Confirm password</FromInput>
+      <Button type="submit">Sign Up</Button>
     </>
   )
 }

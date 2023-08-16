@@ -1,5 +1,6 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { useState, useEffect } from "react"
+import { useAppDispatch } from "../../redux/store"
 
 import { fetchNewBooks } from "../../redux/newBooksSlice"
 import { fetchBookByIsbn13 } from "../../redux/bookSlice"
@@ -9,9 +10,10 @@ import { Container } from "../../components/Container"
 import { Loading } from "../../components/Loading"
 import { Error } from "../../components/Error"
 import { Book } from "../../components/Book"
+import { BookResponse } from "../../services/books"
 
 export function Books() {
-  const dispatch = useDispatch<any>()  //TODO: fix any
+  const dispatch = useAppDispatch()  //TODO: fix any
   const { newBooks, loading, error } = useSelector((state: RootState) => state.newBooks)
   const [booksWithDetails, setBooksWithDetails] = useState([]);
   const [loadingDetails, setLoadingDetails] = useState(false);

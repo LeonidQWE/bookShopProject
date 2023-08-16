@@ -1,7 +1,9 @@
+import { ReactNode } from 'react'
+
 import './FormInput.css'
 
 type FromInputProps = {
-  children: string
+  children: ReactNode
   type: string
   placeholder: string
   id: string
