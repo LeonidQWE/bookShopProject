@@ -1,10 +1,11 @@
 import { useSelector } from "react-redux"
-import { useState, useEffect } from "react"
-import { useAppDispatch } from "../../redux/store"
+import { useEffect } from "react"
 
+
+import { useAppDispatch } from "../../redux/store"
 import { fetchNewBooks } from "../../redux/newBooksSlice"
-import { fetchBookByIsbn13 } from "../../redux/bookSlice"
 import { RootState } from "../../redux/store"
+
 import { Title } from "../../components/Title"
 import { Container } from "../../components/Container"
 import { Loading } from "../../components/Loading"
@@ -12,34 +13,12 @@ import { Error } from "../../components/Error"
 import { Book } from "../../components/Book"
 
 export function Books() {
-  const dispatch = useAppDispatch()  //TODO: fix any
+  const dispatch = useAppDispatch()
   const { newBooks, loading, error } = useSelector((state: RootState) => state.newBooks)
-  const [booksWithDetails, setBooksWithDetails] = useState([]);
-  const [loadingDetails, setLoadingDetails] = useState(false);
 
   useEffect(() => {
     dispatch(fetchNewBooks());
   }, [dispatch]);
-
-  useEffect(() => {
-    const fetchBooksDetails = async () => {
-      setLoadingDetails(true)
-
-      try {
-        const bookDetailsPromises = newBooks.map((book) => dispatch(fetchBookByIsbn13(book.isbn13)))
-        console.log(bookDetailsPromises)
-        const bookDetails = await Promise.all(bookDetailsPromises)
-        console.log(bookDetails)
-        setBooksWithDetails(bookDetails)
-      } catch (error) {
-        alert(error)
-      } finally {
-        setLoadingDetails(false)
-      }
-    }
-
-    fetchBooksDetails();
-  }, [dispatch, newBooks]);
 
   if (loading) {
     return <Loading />
@@ -50,15 +29,14 @@ export function Books() {
   }
 
   function renderBooks() {
-    return booksWithDetails.map((book) => <Book key={book.payload.isbn13} data={book.payload} />)
+    return newBooks.map((book) => <Book key={book.isbn13} data={book} />)
   }
-
 
   return (
     <>
       <Title>New Releases Books</Title>
       <Container className='container-flex'>
-        {loading || loadingDetails ? (
+        {loading ? (
           <Loading />
         ) : (
           newBooks.length && renderBooks()

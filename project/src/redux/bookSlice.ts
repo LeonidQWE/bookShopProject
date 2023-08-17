@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { requestBookByIsbn13, BookResponse } from "../services/books";
 
 interface BookState {
@@ -7,9 +7,9 @@ interface BookState {
   errorDetails: boolean
 }
 
-export const fetchBookByIsbn13 = createAsyncThunk('bookWithDetails/fetchBookByIsbn13', async (isbn13: string) => {
+export const fetchBookByIsbn13 = createAsyncThunk<BookResponse, string>('bookWithDetails/fetchBookByIsbn13', async (isbn13: string) => {
   const bookWithDetails = await requestBookByIsbn13(isbn13)
-  return bookWithDetails as BookResponse
+  return bookWithDetails
 })
 
 const bookSlice = createSlice({
@@ -26,7 +26,7 @@ const bookSlice = createSlice({
     builder.addCase(fetchBookByIsbn13.pending, state => {
       state.loadingDetails = true
     })
-    builder.addCase(fetchBookByIsbn13.fulfilled, (state, action: PayloadAction<BookResponse>) => {
+    builder.addCase(fetchBookByIsbn13.fulfilled, (state, action) => {
       state.loadingDetails = false
       state.bookWithDetails = action.payload
     })

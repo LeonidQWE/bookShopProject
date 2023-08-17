@@ -1,15 +1,18 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"
-import { requestNewBooks, Book } from "../services/books"
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
+import { requestNewBooks, requestBookByIsbn13, BookResponse } from "../services/books"
 
 interface NewBooksState {
-  newBooks: Book[]
+  newBooks: BookResponse[]
   loading: boolean
   error: boolean
 }
 
-export const fetchNewBooks = createAsyncThunk( 'newBooks/fetchNewBooks', async () => {
+export const fetchNewBooks = createAsyncThunk<BookResponse[]>( 'newBooks/fetchNewBooks', async () => {
   const { books } = await requestNewBooks()
-  return books as Book[]
+  const listByIsbn13 = books.map((book) => book.isbn13)
+  const bookDetailsPromises = listByIsbn13.map((isbn13) => requestBookByIsbn13(isbn13))
+  const bookDetails = await Promise.all(bookDetailsPromises)
+  return bookDetails
 })
 
 const newBooksSlice = createSlice({
@@ -26,7 +29,7 @@ const newBooksSlice = createSlice({
     builder.addCase(fetchNewBooks.pending, state => {
       state.loading = true
     })
-    builder.addCase(fetchNewBooks.fulfilled, (state, action: PayloadAction<Book[]>) => {
+    builder.addCase(fetchNewBooks.fulfilled, (state, action) => {
       state.loading = false
       state.newBooks = action.payload
     })
