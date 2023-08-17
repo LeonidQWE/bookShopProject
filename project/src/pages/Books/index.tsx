@@ -1,10 +1,8 @@
-import { useSelector } from "react-redux"
 import { useEffect } from "react"
 
-
-import { useAppDispatch } from "../../redux/store"
+import { useAppDispatch, useAppSelector } from "../../hooks/inedx"
 import { fetchNewBooks } from "../../redux/newBooksSlice"
-import { RootState } from "../../redux/store"
+import { BookResponseWithFavorite } from "../../services/books"
 
 import { Title } from "../../components/Title"
 import { Container } from "../../components/Container"
@@ -12,13 +10,17 @@ import { Loading } from "../../components/Loading"
 import { Error } from "../../components/Error"
 import { Book } from "../../components/Book"
 
-export function Books() {
+export function Books(): JSX.Element {
   const dispatch = useAppDispatch()
-  const { newBooks, loading, error } = useSelector((state: RootState) => state.newBooks)
+  const { newBooks, loading, error } = useAppSelector(state => state.newBooks)
 
   useEffect(() => {
     dispatch(fetchNewBooks());
   }, [dispatch]);
+
+  const newBooksWithFavorite: BookResponseWithFavorite[] = newBooks.map((book) => {
+    return { ...book, favorite: false }
+  })
 
   if (loading) {
     return <Loading />
@@ -29,7 +31,7 @@ export function Books() {
   }
 
   function renderBooks() {
-    return newBooks.map((book) => <Book key={book.isbn13} data={book} />)
+    return newBooksWithFavorite.map((book) => <Book key={book.isbn13} data={book} />)
   }
 
   return (

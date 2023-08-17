@@ -16,7 +16,7 @@ export type Books = {
   books: Book[]
 }
 
-export type BookResponse = {
+export interface BookResponse {
   error: string
   title: string
   subtitle: string
@@ -32,6 +32,10 @@ export type BookResponse = {
   image: string
   url: string
   pdf: object
+}
+
+export interface BookResponseWithFavorite extends BookResponse {
+  favorite: boolean
 }
 
 export const requestNewBooks = async (): Promise<Books> => {
