@@ -37,7 +37,7 @@ export function Books(): JSX.Element {
   return (
     <>
       <Title>New Releases Books</Title>
-      <Container className='container-flex'>
+      <Container variant='flex'>
         {loading ? (
           <Loading />
         ) : (

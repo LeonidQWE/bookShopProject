@@ -2,13 +2,17 @@ import { ReactNode } from 'react'
 import './Containre.css'
 
 type ContainerProps = {
-  className: string
+  variant: string
   children: ReactNode
 }
 
-export function Container({ className, children }: ContainerProps): JSX.Element {
+export function Container({ variant, children }: ContainerProps): JSX.Element {
+  const flex = variant === 'flex' ? 'container-flex' : ''
+  const form = variant === 'form' ? 'container-form' : ''
+  const formContent = variant === 'form__content' ? 'container-form__content' : ''
+
   return (
-    <div className={className}>
+    <div className={flex || form || formContent}>
       {children}
     </div>
   )

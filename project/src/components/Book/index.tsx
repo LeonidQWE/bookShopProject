@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import { Rating } from '../Rating'
 
 import './Book.css'
@@ -22,11 +24,15 @@ type BookProps = {
   }
 }
 
-export function Book({ data }: BookProps ): JSX.Element {  //TODO: fix any
+export function Book({ data }: BookProps): JSX.Element {  //TODO: fix any
   return (
     <div className="book">
       <img className="book__image" src={data.image} alt="" />
-      <h3 className="book__title">{data.title}</h3>
+      <div>
+        <Link to={`/${data.isbn13}`} className="book__title">
+          {data.title}
+        </Link>
+      </div>
       <div className="book__info">
         <span className="book__author">{`${data.authors}, ${data.publisher} ${data.year}`}</span>
       </div>

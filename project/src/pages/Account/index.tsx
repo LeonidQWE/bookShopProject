@@ -1,16 +1,12 @@
 import { Title } from "../../components/Title"
-import { Link } from "../../components/Link"
 import { Subtitle } from "../../components/Subtitle"
 import { FromInput } from "../../components/FormInput"
-
-import home from "../../images/home.svg"
+import { HomeLink } from "../../components/HomeLink"
 
 export function Account() {
   return (
     <>
-      <Link to="/" className="link__home">
-        <img src={home} alt="" />
-      </Link>
+      <HomeLink />
       <Title>Account</Title>
       <Subtitle>people</Subtitle>
       <FromInput

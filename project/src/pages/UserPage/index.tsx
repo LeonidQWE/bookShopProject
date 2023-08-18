@@ -5,8 +5,8 @@ import { Container } from "../../components/Container"
 
 export function UserPage(): JSX.Element {
   return (
-    <Container className="container-form">
-      <Container className="container-form__content">
+    <Container variant="form">
+      <Container variant="form__content">
         <Outlet />
       </Container>
     </Container>

@@ -9,6 +9,7 @@ import { ResetPassword } from "./pages/ResetPassword"
 import { SignIn } from "./pages/SignIn"
 import { SignUp } from "./pages/SignUp"
 import { Account } from "./pages/Account"
+import { SingleBookPage } from "./pages/SingleBookPage"
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <Books />
+      },
+      {
+        path: '/:bookIsbn13',
+        element: <SingleBookPage />
       },
       {
         path: '/bookmarks',

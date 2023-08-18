@@ -1,14 +1,14 @@
-.link {
+.link-element {
   display: inline-block;
   margin-bottom: 1rem;
 }
 
-.link__text {
+.link-element__text {
   color: #000;
   text-decoration: none;
 }
 
-.link .link__text:hover {
+.link-element .link-element__text:hover {
   font-weight: 600;
 }
 

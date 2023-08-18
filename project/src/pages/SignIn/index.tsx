@@ -1,6 +1,6 @@
 import { FromInput } from "../../components/FormInput"
 import { Button } from "../../components/Button"
-import { Link } from "../../components/Link"
+import { LinkMessage } from "../../components/LinkMessage"
 import { UserForm } from "../../components/UserForm"
 
 export function SignIn() {
@@ -16,9 +16,9 @@ export function SignIn() {
         placeholder="Your password"
         id="signInPassword"
         htmlFor="signInPassword">Password</FromInput>
-      <Link
+      <LinkMessage
         to="/user_page/reset_password"
-        className="link__text">Forgot password ?</Link>
+        className="link-element__text">Forgot password ?</LinkMessage>
       <Button type="submit">Sign In</Button>
     </UserForm>
   )
