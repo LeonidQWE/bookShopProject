@@ -1,0 +1,36 @@
+.single-book, .info__title, .description__item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.single-book__preview {
+  padding: 3.5rem 7.5rem;
+  background-color: #FEE9E2;
+}
+
+.preview__favorite {
+  display: none;
+}
+
+.single-book__info {
+  width: 45%;
+  border-top: 1px solid #a8a4a4;
+  padding: 2rem 0 0 0;
+}
+
+.info__price {
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+.info__description {
+  margin: 2rem 0;
+}
+
+.description__item {
+  padding: 0.5rem 0;
+}
+
+.item__category {
+  color: #ABABAB;
+}

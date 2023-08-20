@@ -32,6 +32,7 @@ export interface BookResponse {
   image: string
   url: string
   pdf: object
+  language: string
 }
 
 export interface BookResponseWithFavorite extends BookResponse {
