@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 import { Title } from "../Title"
 import { Rating } from "../Rating"
 import { Button } from "../Button"
@@ -11,6 +13,21 @@ interface BookInfoProps {
 }
 
 export function BookInfo({ data }: BookInfoProps): JSX.Element {
+  const [selectedOption, setSelectedOption] = useState('description')
+  let bookInfo = ''
+
+  function handleClickSelectOption(option: string) {
+    setSelectedOption(option)
+  }
+
+  if (selectedOption === 'description') {
+    bookInfo = data.desc
+  } if (selectedOption === 'authors') {
+    bookInfo = data.authors
+  } if (selectedOption === 'reviews') {
+    bookInfo = 'Good book!'
+  }
+
   return (
     <>
       <Title>{data.title}</Title>
@@ -50,6 +67,20 @@ export function BookInfo({ data }: BookInfoProps): JSX.Element {
 
           <Button type="button">Add to card</Button>
         </div>
+      </div>
+
+      <nav className="single-book__navbar">
+        <ul className="navbar__list">
+          <li
+          onClick={() => handleClickSelectOption('description')}
+          className={`navbar__item ${(selectedOption === 'description' ? 'navbar__item_active' : '')}`}>Description</li>
+          <li onClick={() => handleClickSelectOption('authors')} className={`navbar__item ${(selectedOption === 'authors' ? 'navbar__item_active' : '')}`}>Authors</li>
+          <li onClick={() => handleClickSelectOption('reviews')} className={`navbar__item ${(selectedOption === 'reviews' ? 'navbar__item_active' : '')}`}>Reviews</li>
+        </ul>
+      </nav>
+
+      <div className="single-book__content">
+        {bookInfo}
       </div>
     </>
 

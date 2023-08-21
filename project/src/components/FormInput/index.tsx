@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 
 import './FormInput.css'
 
-type FromInputProps = {
+type FormInputProps = {
   children: ReactNode
   type: string
   placeholder: string
@@ -10,7 +10,7 @@ type FromInputProps = {
   htmlFor: string
 }
 
-export function FromInput ({ children, type, placeholder, id, htmlFor }: FromInputProps): JSX.Element {
+export function FormInput ({ children, type, placeholder, id, htmlFor }: FormInputProps): JSX.Element {
   return (
     <div className="form-input">
       <label className="form-input__label" htmlFor={htmlFor}>{children}</label>
