@@ -7,7 +7,9 @@ import user from '../../images/user.svg'
 export function Header(): JSX.Element {
   return (
     <header className='header'>
-      <span className='header__logo'>bookstore</span>
+      <NavLink to='/'>
+        <span className='header__logo'>bookstore</span>
+      </NavLink>
       <input className='header__search' placeholder='Search' type="text" />
       <div>
         <NavLink to='/bookmarks'><img src={favorite} alt=""></img></NavLink>

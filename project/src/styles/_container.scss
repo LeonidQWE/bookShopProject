@@ -1,8 +1,10 @@
 .container {
-  &-flex {
+  &-books {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: calc((100% - 90%) / 2);
+    padding: 3rem 0;
+    align-items: stretch;
   }
 
   &-form {
