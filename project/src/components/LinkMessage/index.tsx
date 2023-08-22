@@ -1,7 +1,5 @@
 import { NavLink } from "react-router-dom"
 
-import './LinkMessage.css'
-
 interface LinkProps {
   children: React.ReactNode | React.ReactNodeArray
   to: string

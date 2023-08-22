@@ -1,7 +1,5 @@
 import { ReactNode } from 'react'
 
-import './Message.css'
-
 interface MessageProps {
   children: ReactNode
 }

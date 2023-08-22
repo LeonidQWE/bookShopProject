@@ -1,13 +1,10 @@
 import { Outlet } from 'react-router-dom'
-import { ReactElement } from 'react'
 
 import { Header } from '../Header'
 import { Footer } from '../Footer'
 import { Main } from '../Main'
 
-import './Layout.css'
-
-export function Layout(): ReactElement {
+export function Layout(): JSX.Element {
   return (
     <div className="layout">
       <Header />

@@ -60,7 +60,7 @@ export function SingleBookPage(): JSX.Element {
             placeholder="Your email"
             id="newsletterEmail"
             htmlFor="newsletterEmail">Be the first to know about new IT books, upcoming releases, exclusive offers and more.</FormInput>
-          <Button type="submit">Subscribe</Button>
+          <Button variant="small" type="submit">Subscribe</Button>
         </UserForm>
       </Container>
 

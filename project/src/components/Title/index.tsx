@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-import './Title.css'
 
 type TitleProps = {
   children: ReactNode;

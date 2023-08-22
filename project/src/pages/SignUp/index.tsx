@@ -25,7 +25,7 @@ export function SignUp() {
         placeholder="Confirm your password"
         id="signUpConfirmPassword"
         htmlFor="signUpConfirmPassword">Confirm password</FormInput>
-      <Button type="submit">Sign Up</Button>
+      <Button variant="big" type="submit">Sign Up</Button>
     </UserForm>
   )
 }

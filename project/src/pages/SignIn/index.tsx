@@ -19,7 +19,7 @@ export function SignIn() {
       <LinkMessage
         to="/user_page/reset_password"
         className="link-element__text">Forgot password ?</LinkMessage>
-      <Button type="submit">Sign In</Button>
+      <Button variant="big" type="submit">Sign In</Button>
     </UserForm>
   )
 }

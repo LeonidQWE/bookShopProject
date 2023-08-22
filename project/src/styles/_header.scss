@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5dfdf;
+  padding: 1rem 0;
+
+  &__logo {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+
+  &__search {
+    width: 37.5rem;
+    height: 2.5rem;
+    border: 1px solid #f0ebeb;
+    border-radius: 1rem;
+    padding: 0 1rem;
+  }
+
+  &__search:focus {
+    background-color: #e5dfdf;
+
+    &::placeholder {
+      opacity: 0;
+    }
+  }
+}

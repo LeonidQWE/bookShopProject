@@ -1,7 +1,5 @@
 import { ReactNode } from 'react'
 
-import './FormInput.css'
-
 type FormInputProps = {
   children: ReactNode
   type: string

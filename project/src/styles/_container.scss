@@ -1,0 +1,29 @@
+.container {
+  &-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &-form {
+    display: flex;
+    justify-content: center;
+
+    &__content {
+      margin-top: 5rem;
+      width: 40%;
+      border: 1px solid #E7E7E7;
+      padding: 2rem;
+    }
+  }
+
+  &-newsletter {
+    background-color: #F4EEFD;
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+
+  &-similar {
+    padding: 3rem 0;
+  }
+}

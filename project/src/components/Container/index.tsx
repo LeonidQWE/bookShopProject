@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-import './Containre.css'
 
 type ContainerProps = {
   variant: string

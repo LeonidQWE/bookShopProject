@@ -1,0 +1,15 @@
+.link-element {
+  display: inline-block;
+  margin-bottom: 1rem;
+
+  &__text {
+    color: #000;
+    text-decoration: none;
+  }
+
+  &, &__text:hover {
+    font-weight: 600;
+  }
+}
+
+

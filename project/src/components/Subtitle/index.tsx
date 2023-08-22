@@ -1,5 +1,3 @@
-import './Subtitle.css'
-
 interface SubtitleProps {
   children: React.ReactNode;
 }

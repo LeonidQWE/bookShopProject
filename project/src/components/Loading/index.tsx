@@ -1,6 +1,4 @@
-import './Loading.css'
-
-export function Loading() {
+export function Loading(): JSX.Element {
   return (
     <div className='loading-message'>
       <h1>Loading </h1>

@@ -2,8 +2,6 @@ import { Link } from 'react-router-dom'
 
 import { Rating } from '../Rating'
 
-import './Book.css'
-
 type BookProps = {
   data: {
     error: string
@@ -24,7 +22,7 @@ type BookProps = {
   }
 }
 
-export function Book({ data }: BookProps): JSX.Element {  //TODO: fix any
+export function Book({ data }: BookProps): JSX.Element {
   return (
     <div className="book">
       <img className="book__image" src={data.image} alt="" />

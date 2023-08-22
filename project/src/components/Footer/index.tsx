@@ -1,6 +1,4 @@
-import './Footer.css'
-
-export function Footer () {
+export function Footer (): JSX.Element {
   return (
     <footer className='footer'>
       <span className='footer__description'>©2022 Bookstore</span>

@@ -1,6 +1,10 @@
-import './Error.css'
+import { ReactNode } from 'react'
 
-export function Error ({children}) {
+interface ErrorProps {
+  children: ReactNode
+}
+
+export function Error ({children}: ErrorProps): JSX.Element {
   return (
     <div className='error'>
       <h1 className='error__message'>{children}</h1>
