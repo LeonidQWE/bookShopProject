@@ -1,5 +1,5 @@
 .container {
-  &-books {
+  &_books {
     display: flex;
     flex-wrap: wrap;
     gap: calc((100% - 90%) / 2);
@@ -7,25 +7,25 @@
     align-items: stretch;
   }
 
-  &-form {
+  &_form {
     display: flex;
     justify-content: center;
-
-    &__content {
-      margin-top: 5rem;
-      width: 40%;
-      border: 1px solid #E7E7E7;
-      padding: 2rem;
-    }
   }
 
-  &-newsletter {
+  &_form-content {
+    margin-top: 5rem;
+    width: 40%;
+    border: 1px solid #E7E7E7;
+    padding: 2rem;
+  }
+
+  &_newsletter {
     background-color: #F4EEFD;
     padding: 2rem;
     margin-top: 2rem;
   }
 
-  &-similar {
+  &_similar {
     padding: 3rem 0;
   }
 }

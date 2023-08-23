@@ -22,8 +22,6 @@ export function SingleBookPage(): JSX.Element {
   const isbn13 = useParams()
   const bookId: string | undefined = isbn13.isbn13
 
-  console.log(newBooks)
-
   useEffect(() => {
     if (bookId) {
       dispatch(fetchBookByIsbn13(bookId))
@@ -52,7 +50,7 @@ export function SingleBookPage(): JSX.Element {
       <HomeLink />
       <BookInfo data={bookWithDetails} />
 
-      <Container variant="newsletter">
+      <Container className="container_newsletter">
         <Subtitle>Subscribe to Newsletter</Subtitle>
         <UserForm>
           <FormInput
@@ -64,9 +62,9 @@ export function SingleBookPage(): JSX.Element {
         </UserForm>
       </Container>
 
-      <Container variant="similar">
+      <Container className="container_similar">
         <Subtitle>Similar books</Subtitle>
-        <Container variant="flex">
+        <Container className="container_books">
          {renderSimilarBooks()}
         </Container>
       </Container>
