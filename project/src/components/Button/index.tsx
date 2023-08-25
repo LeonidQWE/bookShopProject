@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ReactNode } from "react"
 
 type ButtonProps = {
   children: ReactNode,
@@ -7,8 +7,8 @@ type ButtonProps = {
 }
 
 export function Button ({ children, type, variant }: ButtonProps): JSX.Element {
-  const big = variant === 'big' ? 'button__big' : ''
-  const small = variant === 'small' ? 'button__small' : ''
+  const big = variant === 'big' ? "button_big" : ""
+  const small = variant === "small" ? 'button_small' : ""
 
   return (
     <button type={type} className={`button ${big || small}`}>{children}</button>

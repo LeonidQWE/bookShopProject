@@ -1,5 +1,5 @@
-import activeStar from '../../images/activeStar.svg'
-import mutedStar from '../../images/mutedStar.svg'
+import activeStar from "../../images/activeStar.svg"
+import mutedStar from "../../images/mutedStar.svg"
 
 interface RatingProps {
   rating: string
@@ -18,7 +18,7 @@ export function Rating ({ rating }: RatingProps): JSX.Element {
       className="rating-star"
       key={index}
       src={starRating[index >= parsedRating ? 0 : 1]}
-      alt={index >= parsedRating ? 'Muted Star' : 'Active Star'}
+      alt={index >= parsedRating ? "Muted Star" : "Active Star"}
     />
   ))
 

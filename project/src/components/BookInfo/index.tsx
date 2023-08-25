@@ -69,11 +69,11 @@ export function BookInfo({ data }: BookInfoProps): JSX.Element {
       <nav className="single-book__navbar">
         <ul className="single-book__list">
           <li onClick={() => handleClickSelectOption('description')}
-          className={`single-book__option ${(selectedOption === 'description' ? 'single-book__option_active' : '')}`}>Description</li>
+          className={`single-book__option ${(selectedOption === "description" ? "single-book__option_active" : "")}`}>Description</li>
           <li onClick={() => handleClickSelectOption('authors')}
-          className={`single-book__option ${(selectedOption === 'authors' ? 'single-book__option_active' : '')}`}>Authors</li>
+          className={`single-book__option ${(selectedOption === 'authors' ? "single-book__option_active" : "")}`}>Authors</li>
           <li onClick={() => handleClickSelectOption('reviews')}
-          className={`single-book__option ${(selectedOption === 'reviews' ? 'single-book__option_active' : '')}`}>Reviews</li>
+          className={`single-book__option ${(selectedOption === 'reviews' ? "single-book__option_active" : "")}`}>Reviews</li>
         </ul>
       </nav>
 
