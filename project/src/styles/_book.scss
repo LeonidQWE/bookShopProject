@@ -7,6 +7,17 @@
   justify-content: space-between;
   align-items: stretch;
 
+  &__preview {
+    background-color: #FEE9E2;
+    position: relative;
+  }
+
+  &__favorite {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
   &__title {
     text-decoration: none;
     color: #000;

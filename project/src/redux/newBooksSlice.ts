@@ -1,18 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
-import { requestNewBooks, requestBookByIsbn13, BookResponse } from "../services/books"
+import { requestNewBooks, requestBookByIsbn13, BookResponseWithFavorite } from "../services/books"
 
 interface NewBooksState {
-  newBooks: BookResponse[]
+  newBooks: BookResponseWithFavorite[]
   loading: boolean
   error: boolean
 }
 
-export const fetchNewBooks = createAsyncThunk<BookResponse[]>( 'newBooks/fetchNewBooks', async () => {
+export const fetchNewBooks = createAsyncThunk<BookResponseWithFavorite[]>( 'newBooks/fetchNewBooks', async () => {
   const { books } = await requestNewBooks()
   const listByIsbn13 = books.map((book) => book.isbn13)
   const bookDetailsPromises = listByIsbn13.map((isbn13) => requestBookByIsbn13(isbn13))
   const bookDetails = await Promise.all(bookDetailsPromises)
-  return bookDetails
+  const bookDetailsWithFavorite = bookDetails.map((book) => ({ ...book, favorite: false }))
+  return bookDetailsWithFavorite
 })
 
 const newBooksSlice = createSlice({

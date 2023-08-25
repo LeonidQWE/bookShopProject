@@ -42,7 +42,6 @@ export function SingleBookPage(): JSX.Element {
     if (similarBooks.length === 3) {
       return similarBooks.map((book) => <Book key={book.isbn13} data={book} />)
     }
-
   }
 
   return (

@@ -12,7 +12,7 @@ export function Header(): JSX.Element {
       </NavLink>
       <input className='header__search' placeholder='Search' type="text" />
       <div>
-        <NavLink to='/bookmarks'><img src={favorite} alt=""></img></NavLink>
+        <NavLink to='/favorite_books'><img src={favorite} alt=""></img></NavLink>
         <img src={basket} alt=""></img>
         <NavLink to='/user_page'><img src={user} alt=""></img></NavLink>
       </div>

@@ -3,14 +3,12 @@ import { ReactNode } from 'react'
 type ContainerProps = {
   className: string
   children: ReactNode
+  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
 }
 
-export function Container({ className, children }: ContainerProps): JSX.Element {
-  // const newsletter = variant === 'newsletter' ? 'container-newsletter' : ''
-  // const similar = variant === 'similar' ? 'container-similar' : ''
-
+export function Container({ className, children, onClick }: ContainerProps): JSX.Element {
   return (
-    <div className={`container ${className}`}>
+    <div className={`container ${className}`} onClick={onClick}>
       {children}
     </div>
   )

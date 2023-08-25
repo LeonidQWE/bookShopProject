@@ -1,10 +1,10 @@
 import { useState } from "react"
 
+import { BookResponse } from "../../services/books"
+
 import { Title } from "../Title"
 import { Rating } from "../Rating"
 import { Button } from "../Button"
-
-import { BookResponse } from "../../services/books"
 
 interface BookInfoProps {
   data: BookResponse
@@ -32,7 +32,6 @@ export function BookInfo({ data }: BookInfoProps): JSX.Element {
       <div className="single-book">
         <div className="single-book__preview">
           <img className="preview__image" src={data.image} alt="" />
-          <img className="preview__favorite" src="" alt="favorite" />
         </div>
 
         <div className="single-book__info">

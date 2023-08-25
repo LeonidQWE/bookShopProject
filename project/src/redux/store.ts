@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit"
 import { newBooksReducer } from "./newBooksSlice"
 import { bookReducer } from "./bookSlice"
+import { myFavoriteReducer } from "./myFavoriteSlice"
 
 const store = configureStore({
   reducer: {
     newBooks: newBooksReducer,
     bookWithDetails: bookReducer,
+    myFavorites: myFavoriteReducer
   }
 })
 

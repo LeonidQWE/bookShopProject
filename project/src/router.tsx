@@ -2,7 +2,7 @@ import { createBrowserRouter, Navigate } from "react-router-dom"
 
 import { Layout } from "./components/Layout"
 import { Books } from "./pages/Books"
-import { Bookmarks } from "./pages/Bookmarks"
+import { FavoriteBooks } from "./pages/FavoriteBooks"
 import { UserPage } from "./pages/UserPage"
 import { Autorization } from "./pages/Autorization"
 import { ResetPassword } from "./pages/ResetPassword"
@@ -24,8 +24,8 @@ export const router = createBrowserRouter([
         element: <SingleBookPage />
       },
       {
-        path: '/bookmarks',
-        element: <Bookmarks />
+        path: '/favorite_books',
+        element: <FavoriteBooks />
       },
       {
         path: '/user_page',

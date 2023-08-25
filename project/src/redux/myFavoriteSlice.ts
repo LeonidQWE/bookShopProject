@@ -1,0 +1,31 @@
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+import { BookResponseWithFavorite } from "../services/books"
+
+interface MyFavoriteState {
+  favoritesNewBooks: BookResponseWithFavorite[]
+}
+
+const myFavoriteSlice = createSlice({
+  name: "myFavorites",
+  initialState: {
+    favoritesNewBooks: [],
+  } as MyFavoriteState,
+
+  reducers: {
+    setMyFavorites: (state, action: PayloadAction<BookResponseWithFavorite[]>) => {
+      const updatedBooks = action.payload;
+      updatedBooks.forEach((updatedBook) => {
+        const index = state.favoritesNewBooks.findIndex((book) => book.isbn13 === updatedBook.isbn13);
+
+        if (index !== -1) {
+          state.favoritesNewBooks[index] = updatedBook;
+        } else {
+          state.favoritesNewBooks.push(updatedBook);
+        }
+      });
+    },
+  }
+})
+
+export const { setMyFavorites } = myFavoriteSlice.actions
+export const myFavoriteReducer = myFavoriteSlice.reducer
