@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 
 import { useAppDispatch, useAppSelector } from "../../hooks/inedx"
-import { fetchBookByIsbn13 } from "../../redux/bookSlice"
+import { getBook } from "../../redux/bookSlice"
 
 import { HomeLink } from "../../components/HomeLink"
 import { BookInfo } from "../../components/BookInfo"
@@ -19,12 +19,12 @@ export function SingleBookPage(): JSX.Element {
   const dispatch = useAppDispatch()
   const {bookWithDetails, loadingDetails, errorDetails} = useAppSelector(state => state.bookWithDetails)
   const { newBooks } = useAppSelector(state => state.newBooks)
-  const isbn13 = useParams()
-  const bookId: string | undefined = isbn13.isbn13
+  const { isbn13 } = useParams()
+  const bookId: string | undefined = isbn13
 
   useEffect(() => {
-    if (bookId) {
-      dispatch(fetchBookByIsbn13(bookId))
+    if (typeof bookId === 'string' && bookId.length > 0) {
+      dispatch(getBook(bookId))
     }
   }, [dispatch, bookId])
 
