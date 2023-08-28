@@ -2,37 +2,52 @@ import { useEffect } from "react"
 
 import { useAppSelector, useAppDispatch } from "../../hooks/inedx"
 import { setMyFavorites } from "../../redux/myFavoriteSlice"
+import { toggleFavorite, unloadInformationFromLocalStorage, loadInformationFromLocalStorage } from "../../helpers"
+import { BookResponseWithFavorite } from "../../services/books"
 
 import { Title } from "../../components/Title"
 import { Book } from "../../components/Book"
 import { Container } from "../../components/Container"
 
-export function FavoriteBooks () {
+export function FavoriteBooks() {
   const dispatch = useAppDispatch()
   const { favoritesNewBooks } = useAppSelector(state => state.myFavorites)
 
-
   useEffect(() => {
-    const dataFromLocalStorage = localStorage.getItem("favoritesBooks")
+    const dataFromLocalStorage = unloadInformationFromLocalStorage("favoritesBooks")
 
-    if (dataFromLocalStorage && dataFromLocalStorage !== '[]') {
-      dispatch(setMyFavorites(JSON.parse(dataFromLocalStorage)))
+    if (dataFromLocalStorage && dataFromLocalStorage.length) {
+      dispatch(setMyFavorites(dataFromLocalStorage))
     }
   }, [dispatch])
 
-  function renderMyFavorites () {
-     return favoritesNewBooks.map((book) => {
-      if (book.favorite) {
-        return <Book key={book.isbn13} data={book} />
-      }
-    })
+  useEffect(() => {
+    loadInformationFromLocalStorage("favoritesBooks", favoritesNewBooks)
+  }, [favoritesNewBooks])
+
+  function renderMyFavoritesBooks() {
+    const filteredBooks: BookResponseWithFavorite[] = favoritesNewBooks.filter((book) => book.favorite)
+
+    if (filteredBooks.length > 0) {
+      return filteredBooks.map((book) => {
+        if (book.favorite) {
+          return <Book key={book.isbn13} data={book} />
+        }
+      })
+    } else {
+      return <h2>You have no favorite books</h2>
+    }
+  }
+
+  function handleClickFavorite(event: React.MouseEvent<HTMLDivElement>) {
+    toggleFavorite(event, dispatch, favoritesNewBooks)
   }
 
   return (
     <>
       <Title>Your favorite Books</Title>
-      <Container className="container_books">
-        {favoritesNewBooks.length && renderMyFavorites()}
+      <Container className="container_books" onClick={handleClickFavorite}>
+        {favoritesNewBooks.length && renderMyFavoritesBooks()}
       </Container>
     </>
   )

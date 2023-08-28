@@ -9,6 +9,7 @@ import { Container } from "../../components/Container"
 import { Loading } from "../../components/Loading"
 import { Error } from "../../components/Error"
 import { Book } from "../../components/Book"
+import { toggleFavorite, unloadInformationFromLocalStorage, loadInformationFromLocalStorage } from "../../helpers"
 
 export function Books(): JSX.Element {
   const dispatch = useAppDispatch()
@@ -20,20 +21,17 @@ export function Books(): JSX.Element {
   }, [dispatch])
 
   useEffect(() => {
-    const dataFromLocalStorage = localStorage.getItem("favoritesBooks")
+    const dataFromLocalStorage = unloadInformationFromLocalStorage("favoritesBooks")
 
-    if (dataFromLocalStorage && dataFromLocalStorage !== '[]') {
-      dispatch(setMyFavorites(JSON.parse(dataFromLocalStorage)))
+    if (dataFromLocalStorage && dataFromLocalStorage.length) {
+      dispatch(setMyFavorites(dataFromLocalStorage))
     } else {
       dispatch(setMyFavorites(newBooks))
     }
   }, [dispatch, newBooks])
 
   useEffect(() => {
-    const saveBooksToLocalStorage = () => {
-      localStorage.setItem("favoritesBooks", JSON.stringify(favoritesNewBooks))
-    }
-    saveBooksToLocalStorage()
+    loadInformationFromLocalStorage("favoritesBooks", favoritesNewBooks)
   }, [favoritesNewBooks])
 
   if (loading) {
@@ -45,18 +43,7 @@ export function Books(): JSX.Element {
   }
 
   const handleClickFavorite = (event: React.MouseEvent<HTMLDivElement>) => {
-    const target = event.target as HTMLElement
-    const { role, isbn13 } = target.dataset
-
-    if (role === 'favorite') {
-      const book = favoritesNewBooks.find((book) => book.isbn13 === isbn13)
-
-      if (book) {
-        const updateBook = { ...book, favorite: !book.favorite }
-        dispatch(setMyFavorites([...favoritesNewBooks, updateBook]))
-
-      }
-    }
+    toggleFavorite(event, dispatch, favoritesNewBooks)
   }
 
   function renderBooks(): JSX.Element[] {
