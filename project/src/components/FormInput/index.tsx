@@ -1,12 +1,4 @@
-import { ReactNode } from 'react'
-
-type FormInputProps = {
-  children: ReactNode
-  type: string
-  placeholder: string
-  id: string
-  htmlFor: string
-}
+import { FormInputProps } from "../../interfeces/FormInputProps"
 
 export function FormInput ({ children, type, placeholder, id, htmlFor }: FormInputProps): JSX.Element {
   return (

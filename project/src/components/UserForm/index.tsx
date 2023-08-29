@@ -1,9 +1,4 @@
-import { ReactNode } from "react"
-
-type UserFormProps = {
-  children: ReactNode
-  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void
-}
+import { UserFormProps } from "../../interfeces/UserFormProps"
 
 export function UserForm ({ children, onSubmit }: UserFormProps): React.ReactElement {
   return (

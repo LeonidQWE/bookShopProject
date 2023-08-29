@@ -1,8 +1,4 @@
-import { ReactNode } from "react"
-
-type TitleProps = {
-  children: ReactNode;
-}
+import { TitleProps } from "../../interfeces/Title"
 
 export function Title ({ children }: TitleProps): JSX.Element {
   return (

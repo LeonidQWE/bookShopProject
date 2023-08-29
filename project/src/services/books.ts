@@ -1,43 +1,6 @@
 import { client } from "../utils/client";
 import { newBooksEndPoint, bookEndPoint } from "../api";
-
-export type Book = {
-  title: string
-  subtitle: string
-  isbn13: string
-  price: string
-  image: string
-  url: string
-}
-
-export type Books = {
-  error: string
-  total: string
-  books: Book[]
-}
-
-export interface BookResponse {
-  error: string
-  title: string
-  subtitle: string
-  authors: string
-  publisher: string
-  isbn10: string
-  isbn13: string
-  pages: string
-  year: string
-  rating: string
-  desc: string
-  price: string
-  image: string
-  url: string
-  pdf: object
-  language: string
-}
-
-export interface BookResponseWithFavorite extends BookResponse {
-  favorite: boolean
-}
+import { Books, BookResponse } from "../interfeces/books";
 
 export const requestNewBooks = async (): Promise<Books> => {
   const { data } = await client.get(newBooksEndPoint);

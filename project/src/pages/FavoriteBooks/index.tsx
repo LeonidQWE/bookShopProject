@@ -3,7 +3,7 @@ import { useEffect } from "react"
 import { useAppSelector, useAppDispatch } from "../../hooks/inedx"
 import { setMyFavorites } from "../../redux/myFavoriteSlice"
 import { toggleFavorite, unloadInformationFromLocalStorage, loadInformationFromLocalStorage } from "../../helpers"
-import { BookResponseWithFavorite } from "../../services/books"
+import { BookResponseWithFavorite } from "../../interfeces/books"
 
 import { Title } from "../../components/Title"
 import { Book } from "../../components/Book"

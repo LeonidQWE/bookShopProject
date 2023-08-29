@@ -1,12 +1,7 @@
 import { NavLink } from "react-router-dom"
+import { LinkMessageProps } from "../../interfeces/LinkMessageProps"
 
-interface LinkProps {
-  children: React.ReactNode | React.ReactNodeArray
-  to: string
-  className?: string
-}
-
-export function LinkMessage ({ children, to, className }: LinkProps): JSX.Element {
+export function LinkMessage ({ children, to, className }: LinkMessageProps): JSX.Element {
   return (
     <div className="link-element">
       <NavLink to={to} className={className}>{children}</NavLink>

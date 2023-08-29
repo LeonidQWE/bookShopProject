@@ -1,10 +1,4 @@
-import { ReactNode } from "react"
-
-type ContainerProps = {
-  className: string
-  children: ReactNode
-  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void
-}
+import { ContainerProps } from "../../interfeces/ContainerProps"
 
 export function Container({ className, children, onClick }: ContainerProps): JSX.Element {
   return (

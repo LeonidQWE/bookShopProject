@@ -1,8 +1,4 @@
-import { ReactNode} from 'react';
-
-interface MainProps {
-  children: ReactNode;
-}
+import { MainProps } from "../../interfeces/MainProps"
 
 export function Main (props: MainProps): JSX.Element {
   return (

@@ -1,8 +1,4 @@
-import { ReactNode } from 'react'
-
-interface ErrorProps {
-  children: ReactNode
-}
+import { ErrorProps } from "../../interfeces/ErrorProps"
 
 export function Error ({children}: ErrorProps): JSX.Element {
   return (

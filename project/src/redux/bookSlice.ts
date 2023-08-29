@@ -1,12 +1,8 @@
 import { createSlice, createAction, PayloadAction } from "@reduxjs/toolkit"
 import { put } from "redux-saga/effects"
-import { requestBookByIsbn13, BookResponse } from "../services/books"
+import { requestBookByIsbn13 } from "../services/books"
 
-interface BookState {
-  bookWithDetails: BookResponse
-  loadingDetails: boolean
-  errorDetails: boolean
-}
+import { BookResponse, BookState } from "../interfeces/books"
 
 export function* getBookSaga({ payload: isbn13}: PayloadAction<string>) {
   yield put(setLoading(true))

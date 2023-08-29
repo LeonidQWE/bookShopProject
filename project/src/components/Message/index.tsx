@@ -1,8 +1,4 @@
-import { ReactNode } from "react"
-
-interface MessageProps {
-  children: ReactNode
-}
+import { MessageProps } from "../../interfeces/MessageProps"
 
 export function Message ({children}: MessageProps): JSX.Element {
   return (

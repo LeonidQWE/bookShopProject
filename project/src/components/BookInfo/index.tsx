@@ -1,14 +1,10 @@
 import { useState } from "react"
 
-import { BookResponse } from "../../services/books"
+import { BookInfoProps } from "../../interfeces/books"
 
 import { Title } from "../Title"
 import { Rating } from "../Rating"
 import { Button } from "../Button"
-
-interface BookInfoProps {
-  data: BookResponse
-}
 
 export function BookInfo({ data }: BookInfoProps): JSX.Element {
   const [selectedOption, setSelectedOption] = useState('description')

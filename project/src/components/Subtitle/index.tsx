@@ -1,6 +1,4 @@
-interface SubtitleProps {
-  children: React.ReactNode;
-}
+import { SubtitleProps } from "../../interfeces/SubtitleProps"
 
 export function Subtitle ({ children }: SubtitleProps): JSX.Element {
   return (

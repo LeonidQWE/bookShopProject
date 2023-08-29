@@ -1,11 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
-import { requestNewBooks, requestBookByIsbn13, BookResponseWithFavorite } from "../services/books"
+import { requestNewBooks, requestBookByIsbn13 } from "../services/books"
+import { BookResponseWithFavorite, NewBooksState } from "../interfeces/books"
 
-interface NewBooksState {
-  newBooks: BookResponseWithFavorite[]
-  loading: boolean
-  error: boolean
-}
+
 
 export const fetchNewBooks = createAsyncThunk<BookResponseWithFavorite[]>( 'newBooks/fetchNewBooks', async () => {
   const { books } = await requestNewBooks()

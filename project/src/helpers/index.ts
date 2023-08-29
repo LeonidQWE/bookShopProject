@@ -1,5 +1,5 @@
 import { Dispatch } from "redux"
-import { BookResponseWithFavorite } from "../services/books"
+import { BookResponseWithFavorite } from "../interfeces/books"
 import { setMyFavorites } from "../redux/myFavoriteSlice"
 
 function toggleFavorite(event: React.MouseEvent<HTMLDivElement>, dispatch: Dispatch, favoritesBooks: BookResponseWithFavorite[]): void {

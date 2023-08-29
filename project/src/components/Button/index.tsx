@@ -1,10 +1,4 @@
-import { ReactNode } from "react"
-
-type ButtonProps = {
-  children: ReactNode,
-  type: "button" | "submit" | "reset" | undefined,
-  variant: string
-}
+import { ButtonProps } from "../../interfeces/ButtonProps"
 
 export function Button ({ children, type, variant }: ButtonProps): JSX.Element {
   const big = variant === 'big' ? "button_big" : ""

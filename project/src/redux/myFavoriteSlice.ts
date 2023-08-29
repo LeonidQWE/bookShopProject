@@ -1,9 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import { BookResponseWithFavorite } from "../services/books"
-
-interface MyFavoriteState {
-  favoritesNewBooks: BookResponseWithFavorite[]
-}
+import { MyFavoriteState, BookResponseWithFavorite } from "../interfeces/books";
 
 const myFavoriteSlice = createSlice({
   name: "myFavorites",
