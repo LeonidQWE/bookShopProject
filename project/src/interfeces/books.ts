@@ -58,4 +58,5 @@ export interface NewBooksState {
   newBooks: BookResponseWithFavorite[]
   loading: boolean
   error: boolean
+  searchQuery: string
 }

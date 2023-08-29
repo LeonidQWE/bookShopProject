@@ -10,6 +10,7 @@ import { SignIn } from "./pages/SignIn"
 import { SignUp } from "./pages/SignUp"
 import { Account } from "./pages/Account"
 import { SingleBookPage } from "./pages/SingleBookPage"
+import { SearchPage } from "./pages/SearchPage"
 
 export const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
       {
         path: '/favorite_books',
         element: <FavoriteBooks />
+      },
+      {
+        path: '/search/:searchQuery',
+        element: <SearchPage />
       },
       {
         path: '/user_page',

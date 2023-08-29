@@ -17,7 +17,7 @@ export function Books(): JSX.Element {
   const { favoritesNewBooks } = useAppSelector(state => state.myFavorites)
 
   useEffect(() => {
-    dispatch(fetchNewBooks())
+    dispatch(fetchNewBooks(''))
   }, [dispatch])
 
   useEffect(() => {

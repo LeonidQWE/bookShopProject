@@ -1,12 +1,33 @@
 import { NavLink } from "react-router-dom"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+
+import { useAppDispatch } from "../../hooks/inedx"
+import { setSearchQuery } from "../../redux/newBooksSlice"
 
 import favorite from '../../images/favorite.svg'
 import basket from '../../images/basket.svg'
 import user from '../../images/user.svg'
 
 export function Header(): JSX.Element {
+  const [query, setQuery] = useState('')
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+
   function getLinkClass({ isActive }: { isActive: boolean }): string {
     return isActive ? 'nav-link active' : 'nav-link'
+  }
+
+  function handleSubmitSearch(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+
+    dispatch(setSearchQuery(query))
+    navigate(`/search/${query}`)
+    setQuery('')
+  }
+
+  function handleChangeSearch(e: React.ChangeEvent<HTMLInputElement>) {
+    setQuery(e.target.value)
   }
 
   return (
@@ -14,7 +35,9 @@ export function Header(): JSX.Element {
       <NavLink to="/">
         <span className="header__logo">bookstore</span>
       </NavLink>
-      <input className="header__search" placeholder="Search" type="text" />
+      <form action="" onSubmit={handleSubmitSearch}>
+        <input className="header__search" placeholder="Search" type="text" value={query} onChange={handleChangeSearch}/>
+      </form>
       <div className="header__navbar">
         <NavLink className={getLinkClass} to="/favorite_books">
           <img src={favorite} alt=""></img>

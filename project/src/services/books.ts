@@ -2,8 +2,12 @@ import { client } from "../utils/client";
 import { newBooksEndPoint, bookEndPoint } from "../api";
 import { Books, BookResponse } from "../interfeces/books";
 
-export const requestNewBooks = async (): Promise<Books> => {
-  const { data } = await client.get(newBooksEndPoint);
+export const requestNewBooks = async (searchQuery?: string): Promise<Books> => {
+  const { data } = await client.get(newBooksEndPoint, {
+    params: {
+      searchQuery: searchQuery || undefined
+    }
+  });
   return data as Books
 }
 

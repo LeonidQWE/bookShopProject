@@ -1,16 +1,16 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"
 import { requestNewBooks, requestBookByIsbn13 } from "../services/books"
 import { BookResponseWithFavorite, NewBooksState } from "../interfeces/books"
 
 
 
-export const fetchNewBooks = createAsyncThunk<BookResponseWithFavorite[]>( 'newBooks/fetchNewBooks', async () => {
-  const { books } = await requestNewBooks()
+export const fetchNewBooks = createAsyncThunk( 'newBooks/fetchNewBooks', async (searchQuery?: string) => {
+  const { books } = await requestNewBooks(searchQuery)
   const listByIsbn13 = books.map((book) => book.isbn13)
   const bookDetailsPromises = listByIsbn13.map((isbn13) => requestBookByIsbn13(isbn13))
   const bookDetails = await Promise.all(bookDetailsPromises)
   const bookDetailsWithFavorite = bookDetails.map((book) => ({ ...book, favorite: false }))
-  return bookDetailsWithFavorite
+  return bookDetailsWithFavorite as BookResponseWithFavorite[]
 })
 
 const newBooksSlice = createSlice({
@@ -18,16 +18,22 @@ const newBooksSlice = createSlice({
   initialState: {
     newBooks: [],
     loading: false,
-    error: false
+    error: false,
+    searchQuery: '',
   } as NewBooksState,
 
-  reducers: {},
+  reducers: {
+    setSearchQuery: (state, action: PayloadAction<string>) => {
+      state.searchQuery = action.payload
+      state.newBooks = []
+    },
+  },
 
   extraReducers: builder => {
     builder.addCase(fetchNewBooks.pending, state => {
       state.loading = true
     })
-    builder.addCase(fetchNewBooks.fulfilled, (state, action) => {
+    builder.addCase(fetchNewBooks.fulfilled, (state, action: PayloadAction<BookResponseWithFavorite[]>) => {
       state.loading = false
       state.newBooks = action.payload
     })
@@ -38,5 +44,6 @@ const newBooksSlice = createSlice({
   }
 })
 
+export const { setSearchQuery } = newBooksSlice.actions
 export const newBooksReducer = newBooksSlice.reducer
 
