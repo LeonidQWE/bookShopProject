@@ -4,7 +4,7 @@
   border-bottom: 1px solid #e5dfdf;
   padding: 1rem 0;
 
-  & > a  {
+  &>a {
     text-decoration: none;
     color: #000;
   }
@@ -30,4 +30,38 @@
       opacity: 0;
     }
   }
+
+  &__navbar {
+
+    & .header__active-marker {
+      display: none;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #d91313;
+
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+
+    & a {
+      display: inline-block;
+      position: relative;
+
+      &.active {
+        .header__active-marker {
+          display: block;
+        }
+      }
+    }
+  }
+
+  // &__active-marker {
+  //   display: none;
+  //   width: 10px;
+  //   height: 10px;
+  //   border-radius: 50%;
+  //   background-color: #d91313;
+  // }
 }
