@@ -1,10 +1,9 @@
 import { Dispatch } from "redux"
-import { BookResponseWithFavorite, BookForBasket } from "../interfeces/books"
 import { setMyFavorites } from "../redux/myFavoriteSlice"
-
+import { NewBookResponse } from "../interfeces/redux"
 
 // Helpers
-function toggleFavorite(event: React.MouseEvent<HTMLDivElement>, dispatch: Dispatch, favoritesBooks: BookResponseWithFavorite[]): void {
+function toggleFavorite(event: React.MouseEvent<HTMLDivElement>, dispatch: Dispatch, favoritesBooks: NewBookResponse[]): void {
   const target = event.target as HTMLElement
   const { role, isbn13 } = target.dataset
 
@@ -18,12 +17,10 @@ function toggleFavorite(event: React.MouseEvent<HTMLDivElement>, dispatch: Dispa
   }
 }
 
-
-
 // Local Storage
-function unloadInformationFromLocalStorage(name: string): BookResponseWithFavorite[] | BookForBasket[] {
+function unloadInformationFromLocalStorage(name: string): NewBookResponse[] {
   const dataFromLocalStorage: string | null = localStorage.getItem(name)
-  const dataFromLocalStorageParsed: BookResponseWithFavorite[] | BookForBasket[] = dataFromLocalStorage ? JSON.parse(dataFromLocalStorage) : []
+  const dataFromLocalStorageParsed: NewBookResponse[] = dataFromLocalStorage ? JSON.parse(dataFromLocalStorage) : []
 
   if (dataFromLocalStorageParsed.length === 0) {
     return []
@@ -32,7 +29,7 @@ function unloadInformationFromLocalStorage(name: string): BookResponseWithFavori
   }
 }
 
-function loadInformationInLocalStorage(name: string, data: BookResponseWithFavorite[] | BookForBasket[]): void {
+function loadInformationInLocalStorage(name: string, data: NewBookResponse[]): void {
   localStorage.setItem(name, JSON.stringify(data))
 }
 

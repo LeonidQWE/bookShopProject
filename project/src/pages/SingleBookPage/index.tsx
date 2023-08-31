@@ -4,8 +4,8 @@ import { useParams } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../hooks/inedx"
 import { getBook } from "../../redux/bookSlice"
 import { setBasketBooks } from "../../redux/basketBookSlice"
-import { BookForBasket } from "../../interfeces/books"
 import { loadInformationInLocalStorage } from "../../helpers"
+import { NewBookResponse } from "../../interfeces/redux"
 
 import { HomeLink } from "../../components/HomeLink"
 import { BookInfo } from "../../components/BookInfo"
@@ -56,7 +56,7 @@ export function SingleBookPage(): JSX.Element {
   const handleClickAddToBasket = (event: React.MouseEvent<HTMLButtonElement>): void => {
     const target = event.target as HTMLElement
     if (target.tagName === 'BUTTON') {
-      const bookWithCounts: BookForBasket = { ...bookWithDetails, count: 1 }
+      const bookWithCounts: NewBookResponse = { ...bookWithDetails, favorite: false, count: 1 }
       dispatch(setBasketBooks([...basketBooks, bookWithCounts]))
     }
   }

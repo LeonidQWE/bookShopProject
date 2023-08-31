@@ -1,4 +1,4 @@
-export interface Book {
+interface Book {
   title: string
   subtitle: string
   isbn13: string
@@ -7,7 +7,7 @@ export interface Book {
   url: string
 }
 
-export interface Books {
+export interface BooksState {
   error: string
   total: string
   books: Book[]
@@ -32,21 +32,16 @@ export interface BookResponse {
   language: string
 }
 
-export interface BookResponseWithFavorite extends BookResponse {
+export interface NewBookResponse extends BookResponse {
   favorite: boolean
-}
-
-export interface BookForBasket extends BookResponse {
   count: number
 }
 
-export interface BookProps {
-  data: BookResponseWithFavorite
-}
-
-export interface BookInfoProps {
-  data: BookResponse
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+export interface NewBooksState {
+  newBooks: NewBookResponse[]
+  loading: boolean
+  error: boolean
+  searchQuery: string
 }
 
 export interface BookState {
@@ -56,16 +51,9 @@ export interface BookState {
 }
 
 export interface MyFavoriteState {
-  favoritesNewBooks: BookResponseWithFavorite[]
-}
-
-export interface NewBooksState {
-  newBooks: BookResponseWithFavorite[]
-  loading: boolean
-  error: boolean
-  searchQuery: string
+  favoritesNewBooks: NewBookResponse[]
 }
 
 export interface BasketBooksState {
-  basketBooks: BookForBasket[]
+  basketBooks: NewBookResponse[]
 }

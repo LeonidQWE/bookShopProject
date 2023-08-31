@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { BookInfoProps } from "../../interfeces/books"
+import { BookInfoProps } from "../../interfeces/BookInfoProps"
 
 import { Title } from "../Title"
 import { Rating } from "../Rating"

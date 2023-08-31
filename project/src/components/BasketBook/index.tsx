@@ -1,10 +1,6 @@
-import { BookForBasket } from "../../interfeces/books"
+import { BasketBookProps } from "../../interfeces/BasketBookProps"
 
 import deleteButton from "../../images/delete.svg"
-
-interface BasketBookProps {
-  data: BookForBasket
-}
 
 export function BasketBook({ data }: BasketBookProps): JSX.Element {
   return (

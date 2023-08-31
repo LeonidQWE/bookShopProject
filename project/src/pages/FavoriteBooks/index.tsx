@@ -3,7 +3,7 @@ import { useEffect } from "react"
 import { useAppSelector, useAppDispatch } from "../../hooks/inedx"
 import { setMyFavorites } from "../../redux/myFavoriteSlice"
 import { toggleFavorite, unloadInformationFromLocalStorage, loadInformationInLocalStorage } from "../../helpers"
-import { BookResponseWithFavorite } from "../../interfeces/books"
+import { NewBookResponse } from "../../interfeces/redux"
 
 import { Title } from "../../components/Title"
 import { Book } from "../../components/Book"
@@ -26,7 +26,7 @@ export function FavoriteBooks() {
   }, [favoritesNewBooks])
 
   function renderMyFavoritesBooks() {
-    const filteredBooks: BookResponseWithFavorite[] = favoritesNewBooks.filter((book) => book.favorite)
+    const filteredBooks: NewBookResponse[] = favoritesNewBooks.filter((book) => book.favorite)
 
     if (filteredBooks.length > 0) {
       return filteredBooks.map((book) => {

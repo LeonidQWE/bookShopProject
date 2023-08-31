@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { BookForBasket, BasketBooksState } from "../interfeces/books";
+// import { BookForBasket, BasketBooksState } from "../interfeces/books";
+import { NewBookResponse, BasketBooksState } from "../interfeces/redux";
 
 const basketBooksSlice = createSlice({
   name: "basketBooks",
@@ -8,11 +9,11 @@ const basketBooksSlice = createSlice({
   } as BasketBooksState,
 
   reducers: {
-    setBasketBooks: (state, action: PayloadAction<BookForBasket[]>) => {
+    setBasketBooks: (state, action: PayloadAction<NewBookResponse[]>) => {
       const updatedBasketBooks = action.payload
 
-      const result = updatedBasketBooks.reduce((acc: BookForBasket[], item: BookForBasket) => {
-        const existingBook = acc.find((book: BookForBasket) => book.isbn13 === item.isbn13);
+      const result = updatedBasketBooks.reduce((acc: NewBookResponse[], item: NewBookResponse) => {
+        const existingBook = acc.find((book: NewBookResponse) => book.isbn13 === item.isbn13);
         if (existingBook) {
           existingBook.count += item.count;
         } else {
