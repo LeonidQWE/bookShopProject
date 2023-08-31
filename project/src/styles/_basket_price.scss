@@ -1,0 +1,18 @@
+.basket-price {
+  &__sum, &__vat, &__sum-total {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__sum, &__vat {
+    color: gray;
+    padding: 0.5rem 0;
+  }
+
+  &__sum-total {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 2rem;
+    padding: 0.5rem 0;
+  }
+}

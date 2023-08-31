@@ -12,7 +12,11 @@ export function BasketBook({ data }: BasketBookProps): JSX.Element {
       <div className="basket-book__info">
         <h3 className="basket-book__title">{data.title}</h3>
         <p className="basket-book__description">{data.authors}, {data.publisher} {data.year}</p>
-        <p className="basket-book__count">- {data.count} +</p>
+        <div>
+          <button data-role="decrement" data-isbn13={data.isbn13} className="basket-book__button">-</button>
+          <span className="basket-book__count">{data.count}</span>
+          <button data-role="increment" data-isbn13={data.isbn13} className="basket-book__button">+</button>
+        </div>
       </div>
 
       <div className="basket-book__price">
@@ -20,7 +24,7 @@ export function BasketBook({ data }: BasketBookProps): JSX.Element {
       </div>
 
       <div className="basket-book__delete">
-        <img src={deleteButton} alt="" />
+        <img data-role="delete" data-isbn13={data.isbn13} src={deleteButton} alt="" />
       </div>
     </div>
   )
