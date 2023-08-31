@@ -3,6 +3,9 @@ import { useParams } from "react-router-dom"
 
 import { useAppDispatch, useAppSelector } from "../../hooks/inedx"
 import { getBook } from "../../redux/bookSlice"
+import { setBasketBooks } from "../../redux/basketBookSlice"
+import { BookForBasket } from "../../interfeces/books"
+import { loadInformationInLocalStorage } from "../../helpers"
 
 import { HomeLink } from "../../components/HomeLink"
 import { BookInfo } from "../../components/BookInfo"
@@ -22,11 +25,17 @@ export function SingleBookPage(): JSX.Element {
   const { isbn13 } = useParams()
   const bookId: string | undefined = isbn13
 
+  const { basketBooks } = useAppSelector(state => state.basketBooks)
+
   useEffect(() => {
     if (typeof bookId === 'string' && bookId.length > 0) {
       dispatch(getBook(bookId))
     }
   }, [dispatch, bookId])
+
+  useEffect(() => {
+    loadInformationInLocalStorage('basketBooks', basketBooks)
+  }, [basketBooks])
 
   if (loadingDetails) {
     return <Loading />
@@ -44,10 +53,18 @@ export function SingleBookPage(): JSX.Element {
     }
   }
 
+  const handleClickAddToBasket = (event: React.MouseEvent<HTMLButtonElement>): void => {
+    const target = event.target as HTMLElement
+    if (target.tagName === 'BUTTON') {
+      const bookWithCounts: BookForBasket = { ...bookWithDetails, count: 1 }
+      dispatch(setBasketBooks([...basketBooks, bookWithCounts]))
+    }
+  }
+
   return (
     <>
       <HomeLink />
-      <BookInfo data={bookWithDetails} />
+      <BookInfo data={bookWithDetails} onClick={handleClickAddToBasket}/>
 
       <Container className="container_newsletter">
         <Subtitle>Subscribe to Newsletter</Subtitle>

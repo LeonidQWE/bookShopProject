@@ -36,12 +36,17 @@ export interface BookResponseWithFavorite extends BookResponse {
   favorite: boolean
 }
 
+export interface BookForBasket extends BookResponse {
+  count: number
+}
+
 export interface BookProps {
   data: BookResponseWithFavorite
 }
 
 export interface BookInfoProps {
   data: BookResponse
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 export interface BookState {
@@ -59,4 +64,8 @@ export interface NewBooksState {
   loading: boolean
   error: boolean
   searchQuery: string
+}
+
+export interface BasketBooksState {
+  basketBooks: BookForBasket[]
 }

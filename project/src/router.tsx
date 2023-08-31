@@ -11,6 +11,7 @@ import { SignUp } from "./pages/SignUp"
 import { Account } from "./pages/Account"
 import { SingleBookPage } from "./pages/SingleBookPage"
 import { SearchPage } from "./pages/SearchPage"
+import { BasketPage } from "./pages/BasketPage"
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
       {
         path: '/search/:searchQuery',
         element: <SearchPage />
+      },
+      {
+        path: '/basket',
+        element: <BasketPage />
       },
       {
         path: '/user_page',

@@ -43,7 +43,10 @@ export function Header(): JSX.Element {
           <img src={favorite} alt=""></img>
           <div className="header__active-marker"></div>
         </NavLink>
-        <img src={basket} alt=""></img>
+        <NavLink className={getLinkClass} to="/basket">
+          <img src={basket} alt=""></img>
+          <div className="header__active-marker"></div>
+        </NavLink>
         <NavLink className={getLinkClass} to="/user_page">
           <img src={user} alt=""></img>
           <div className="header__active-marker"></div>

@@ -2,7 +2,7 @@ import { useEffect } from "react"
 
 import { useAppSelector, useAppDispatch } from "../../hooks/inedx"
 import { setMyFavorites } from "../../redux/myFavoriteSlice"
-import { toggleFavorite, unloadInformationFromLocalStorage, loadInformationFromLocalStorage } from "../../helpers"
+import { toggleFavorite, unloadInformationFromLocalStorage, loadInformationInLocalStorage } from "../../helpers"
 import { BookResponseWithFavorite } from "../../interfeces/books"
 
 import { Title } from "../../components/Title"
@@ -22,7 +22,7 @@ export function FavoriteBooks() {
   }, [dispatch])
 
   useEffect(() => {
-    loadInformationFromLocalStorage("favoritesBooks", favoritesNewBooks)
+    loadInformationInLocalStorage("favoritesBooks", favoritesNewBooks)
   }, [favoritesNewBooks])
 
   function renderMyFavoritesBooks() {

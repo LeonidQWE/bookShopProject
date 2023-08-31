@@ -9,7 +9,7 @@ import { Container } from "../../components/Container"
 import { Loading } from "../../components/Loading"
 import { Error } from "../../components/Error"
 import { Book } from "../../components/Book"
-import { toggleFavorite, unloadInformationFromLocalStorage, loadInformationFromLocalStorage } from "../../helpers"
+import { toggleFavorite, unloadInformationFromLocalStorage, loadInformationInLocalStorage } from "../../helpers"
 
 export function Books(): JSX.Element {
   const dispatch = useAppDispatch()
@@ -31,7 +31,7 @@ export function Books(): JSX.Element {
   }, [dispatch, newBooks])
 
   useEffect(() => {
-    loadInformationFromLocalStorage("favoritesBooks", favoritesNewBooks)
+    loadInformationInLocalStorage("favoritesBooks", favoritesNewBooks)
   }, [favoritesNewBooks])
 
   if (loading) {

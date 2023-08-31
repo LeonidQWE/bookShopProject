@@ -6,7 +6,7 @@ import { Title } from "../Title"
 import { Rating } from "../Rating"
 import { Button } from "../Button"
 
-export function BookInfo({ data }: BookInfoProps): JSX.Element {
+export function BookInfo({ data, onClick }: BookInfoProps): JSX.Element {
   const [selectedOption, setSelectedOption] = useState('description')
   let bookInfo = ''
 
@@ -58,7 +58,7 @@ export function BookInfo({ data }: BookInfoProps): JSX.Element {
             </div>
           </div>
 
-          <Button variant="big" type="button">Add to card</Button>
+          <Button variant="big" type="button" onClick={onClick}>Add to card</Button>
         </div>
       </div>
 

@@ -1,7 +1,7 @@
-import { useAppDispatch, useAppSelector } from "../../hooks/inedx"
 import { useEffect } from "react"
 
 import { fetchNewBooks } from "../../redux/newBooksSlice"
+import { useAppDispatch, useAppSelector } from "../../hooks/inedx"
 
 import { Title } from "../../components/Title"
 import { Container } from "../../components/Container"

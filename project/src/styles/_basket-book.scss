@@ -1,0 +1,47 @@
+.basket-book {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0;
+  border-bottom: 1px solid #000;
+
+  &__preview {
+    padding: 1rem;
+    background-color: #FEE9E2;
+  }
+
+  &__image {
+    width: 200px;
+  }
+
+  &__info {
+    width: 50%;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+
+  &__description {
+    color: gray;
+  }
+
+  &__count {
+    margin-top: 1.5rem;
+    font-size: 2rem;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 2rem;
+  }
+
+  &__delete, &__price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+}

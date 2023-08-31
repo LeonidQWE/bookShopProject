@@ -5,6 +5,7 @@ import { configureStore } from "@reduxjs/toolkit"
 import { newBooksReducer } from "./newBooksSlice"
 import { myFavoriteReducer } from "./myFavoriteSlice"
 import { GET_BOOK, getBookSaga, bookReducer } from "./bookSlice"
+import { basketBooksReducer } from "./basketBookSlice"
 
 const sagaMiddleware = createSagaMiddleware()
 
@@ -16,7 +17,8 @@ export const store = configureStore({
   reducer: {
     newBooks: newBooksReducer,
     bookWithDetails: bookReducer,
-    myFavorites: myFavoriteReducer
+    myFavorites: myFavoriteReducer,
+    basketBooks: basketBooksReducer,
   },
 
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware)
