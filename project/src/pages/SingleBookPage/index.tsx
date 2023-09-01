@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../hooks/inedx"
 import { getBook } from "../../redux/bookSlice"
 import { setBasketBooks } from "../../redux/basketBookSlice"
-import { loadInformationInLocalStorage } from "../../helpers"
+// import { loadInformationInLocalStorage } from "../../helpers"
 import { NewBookResponse } from "../../interfeces/redux"
 
 import { HomeLink } from "../../components/HomeLink"
@@ -32,10 +32,6 @@ export function SingleBookPage(): JSX.Element {
       dispatch(getBook(bookId))
     }
   }, [dispatch, bookId])
-
-  useEffect(() => {
-    loadInformationInLocalStorage('basketBooks', basketBooks)
-  }, [basketBooks])
 
   if (loadingDetails) {
     return <Loading />

@@ -1,38 +1,27 @@
 import React, { useEffect } from "react"
 
 import { useAppDispatch, useAppSelector } from "../../hooks/inedx"
-import { fetchNewBooks } from "../../redux/newBooksSlice"
-import { setMyFavorites } from "../../redux/myFavoriteSlice"
+import { fetchNewBooks, setMyFavorites } from "../../redux/newBooksSlice"
 
 import { Title } from "../../components/Title"
 import { Container } from "../../components/Container"
 import { Loading } from "../../components/Loading"
 import { Error } from "../../components/Error"
 import { Book } from "../../components/Book"
-import { toggleFavorite, unloadInformationFromLocalStorage, loadInformationInLocalStorage } from "../../helpers"
+import { toggleFavorite, getDataFromLocalStorage } from "../../helpers"
 
 export function Books(): JSX.Element {
   const dispatch = useAppDispatch()
   const { newBooks, loading, error } = useAppSelector(state => state.newBooks)
-  const { favoritesNewBooks } = useAppSelector(state => state.myFavorites)
 
   useEffect(() => {
-    dispatch(fetchNewBooks(''))
-  }, [dispatch])
-
-  useEffect(() => {
-    const dataFromLocalStorage = unloadInformationFromLocalStorage("favoritesBooks")
-
+    const dataFromLocalStorage = getDataFromLocalStorage('favoritesBooks')
     if (dataFromLocalStorage && dataFromLocalStorage.length) {
       dispatch(setMyFavorites(dataFromLocalStorage))
     } else {
-      dispatch(setMyFavorites(newBooks))
+      dispatch(fetchNewBooks(''))
     }
-  }, [dispatch, newBooks])
-
-  useEffect(() => {
-    loadInformationInLocalStorage("favoritesBooks", favoritesNewBooks)
-  }, [favoritesNewBooks])
+  }, [dispatch])
 
   if (loading) {
     return <Loading />
@@ -43,11 +32,14 @@ export function Books(): JSX.Element {
   }
 
   const handleClickFavorite = (event: React.MouseEvent<HTMLDivElement>) => {
-    toggleFavorite(event, dispatch, favoritesNewBooks)
+    toggleFavorite(event, dispatch, newBooks)
   }
 
   function renderBooks(): JSX.Element[] {
-    return favoritesNewBooks.map((book) => <Book key={book.isbn13} data={book} />)
+    if (newBooks.length === 0) {
+      return newBooks.map((book) => <Book key={book.isbn13} data={book} />)
+    }
+    return newBooks.map((book) => <Book key={book.isbn13} data={book} />)
   }
 
   return (
@@ -57,7 +49,7 @@ export function Books(): JSX.Element {
         {loading ? (
           <Loading />
         ) : (
-          favoritesNewBooks.length && renderBooks()
+          renderBooks()
         )}
       </Container>
     </>

@@ -39,6 +39,7 @@ export interface NewBookResponse extends BookResponse {
 
 export interface NewBooksState {
   newBooks: NewBookResponse[]
+  favoritesBooks: NewBookResponse[]
   loading: boolean
   error: boolean
   searchQuery: string

@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"
 import { requestNewBooks, requestBookByIsbn13 } from "../services/books"
 import { NewBookResponse, NewBooksState } from "../interfeces/redux"
+import { setDataInLocalStorage, getDataFromLocalStorage } from "../helpers"
 
 export const fetchNewBooks = createAsyncThunk( 'newBooks/fetchNewBooks', async (searchQuery?: string) => {
   const { books } = await requestNewBooks(searchQuery)
@@ -14,7 +15,7 @@ export const fetchNewBooks = createAsyncThunk( 'newBooks/fetchNewBooks', async (
 const newBooksSlice = createSlice({
   name: 'newBooks',
   initialState: {
-    newBooks: [],
+    newBooks: getDataFromLocalStorage('favoritesBooks'),
     loading: false,
     error: false,
     searchQuery: '',
@@ -25,6 +26,20 @@ const newBooksSlice = createSlice({
       state.searchQuery = action.payload
       state.newBooks = []
     },
+
+    setMyFavorites: (state, action: PayloadAction<NewBookResponse[]>) => {
+      const updatedBooks = action.payload
+      updatedBooks.forEach((updatedBook) => {
+        const index = state.newBooks.findIndex((book) => book.isbn13 === updatedBook.isbn13);
+
+        if (index !== -1) {
+          state.newBooks[index] = updatedBook
+        } else {
+          state.newBooks.push(updatedBook)
+        }
+        setDataInLocalStorage('favoritesBooks', state.newBooks)
+      });
+    },
   },
 
   extraReducers: builder => {
@@ -34,6 +49,7 @@ const newBooksSlice = createSlice({
     builder.addCase(fetchNewBooks.fulfilled, (state, action: PayloadAction<NewBookResponse[]>) => {
       state.loading = false
       state.newBooks = action.payload
+      setDataInLocalStorage('favoritesBooks', state.newBooks)
     })
     builder.addCase(fetchNewBooks.rejected, state => {
       state.loading = false
@@ -42,6 +58,6 @@ const newBooksSlice = createSlice({
   }
 })
 
-export const { setSearchQuery } = newBooksSlice.actions
+export const { setSearchQuery, setMyFavorites } = newBooksSlice.actions
 export const newBooksReducer = newBooksSlice.reducer
 

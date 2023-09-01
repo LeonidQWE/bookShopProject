@@ -1,8 +1,9 @@
 import { Dispatch } from "redux"
-import { setMyFavorites } from "../redux/myFavoriteSlice"
+import { setMyFavorites } from "../redux/newBooksSlice"
+import { setBasketBooks } from "../redux/basketBookSlice"
 import { NewBookResponse } from "../interfeces/redux"
 
-// Helpers
+// Hendlers
 function toggleFavorite(event: React.MouseEvent<HTMLDivElement>, dispatch: Dispatch, favoritesBooks: NewBookResponse[]): void {
   const target = event.target as HTMLElement
   const { role, isbn13 } = target.dataset
@@ -17,20 +18,72 @@ function toggleFavorite(event: React.MouseEvent<HTMLDivElement>, dispatch: Dispa
   }
 }
 
-// Local Storage
-function unloadInformationFromLocalStorage(name: string): NewBookResponse[] {
-  const dataFromLocalStorage: string | null = localStorage.getItem(name)
-  const dataFromLocalStorageParsed: NewBookResponse[] = dataFromLocalStorage ? JSON.parse(dataFromLocalStorage) : []
+function updateBasketBooks(event: React.MouseEvent<HTMLDivElement>, dispatch: Dispatch, basketBooks: NewBookResponse[]): void {
+  const target = event.target as HTMLElement
+  const { role, isbn13 } = target.dataset
 
-  if (dataFromLocalStorageParsed.length === 0) {
-    return []
-  } else {
-    return dataFromLocalStorageParsed
+  if (role === 'decrement') {
+    const updatedBasketBooks = doDecrementBasketBook(basketBooks, isbn13)
+    dispatch(setBasketBooks(updatedBasketBooks))
+  }
+
+  if (role === 'increment') {
+    const updatedBasketBooks = doIncrementBasketBook(basketBooks, isbn13)
+    dispatch(setBasketBooks(updatedBasketBooks))
+  }
+
+  if (role === 'delete') {
+    const updatedBasketBooks = deleteBasketBook(basketBooks, isbn13)
+    dispatch(setBasketBooks(updatedBasketBooks))
   }
 }
 
-function loadInformationInLocalStorage(name: string, data: NewBookResponse[]): void {
+// Local Storage
+function getDataFromLocalStorage(name: string): NewBookResponse[] {
+  const dataFromLocalStorage = JSON.parse(localStorage.getItem(name) as string)
+  if (!dataFromLocalStorage) return []
+  return dataFromLocalStorage
+}
+
+function setDataInLocalStorage(name: string, data: NewBookResponse[]): void {
   localStorage.setItem(name, JSON.stringify(data))
 }
 
-export { toggleFavorite, unloadInformationFromLocalStorage, loadInformationInLocalStorage }
+
+// Helpers functions
+function doDecrementBasketBook(basketBooks: NewBookResponse[], isbn13: string | undefined): NewBookResponse[] {
+  const updateBasketBooks = basketBooks
+    .map((book: NewBookResponse) => {
+      if (book.isbn13 === isbn13) {
+        const newCount = book.count - 1
+
+        if (newCount >= 1) {
+          return { ...book, count: newCount }
+        } else {
+          return { ...book, count: 0 }
+        }
+      }
+      return book
+    })
+    .filter((book: NewBookResponse) => book.count > 0)
+
+  return updateBasketBooks
+}
+
+function doIncrementBasketBook(basketBooks: NewBookResponse[], isbn13: string | undefined): NewBookResponse[] {
+  const updateBasketBooks = basketBooks.map((book) => {
+    if (book.isbn13 === isbn13) {
+      return { ...book, count: book.count + 1 }
+    }
+    return book
+  })
+
+  return updateBasketBooks
+}
+
+function deleteBasketBook ( basketBooks: NewBookResponse[], isbn13: string | undefined): NewBookResponse[] {
+  const updateBasketBooks = basketBooks.filter((book) => book.isbn13 !== isbn13)
+  return updateBasketBooks
+}
+//Export
+export { toggleFavorite, getDataFromLocalStorage, setDataInLocalStorage, updateBasketBooks }

@@ -1,8 +1,5 @@
-import { useEffect } from "react"
-
 import { useAppSelector, useAppDispatch } from "../../hooks/inedx"
-import { setMyFavorites } from "../../redux/myFavoriteSlice"
-import { toggleFavorite, unloadInformationFromLocalStorage, loadInformationInLocalStorage } from "../../helpers"
+import { toggleFavorite } from "../../helpers"
 import { NewBookResponse } from "../../interfeces/redux"
 
 import { Title } from "../../components/Title"
@@ -11,22 +8,10 @@ import { Container } from "../../components/Container"
 
 export function FavoriteBooks() {
   const dispatch = useAppDispatch()
-  const { favoritesNewBooks } = useAppSelector(state => state.myFavorites)
-
-  useEffect(() => {
-    const dataFromLocalStorage = unloadInformationFromLocalStorage("favoritesBooks")
-
-    if (dataFromLocalStorage && dataFromLocalStorage.length) {
-      dispatch(setMyFavorites(dataFromLocalStorage))
-    }
-  }, [dispatch])
-
-  useEffect(() => {
-    loadInformationInLocalStorage("favoritesBooks", favoritesNewBooks)
-  }, [favoritesNewBooks])
+  const { newBooks } = useAppSelector(state => state.newBooks)
 
   function renderMyFavoritesBooks() {
-    const filteredBooks: NewBookResponse[] = favoritesNewBooks.filter((book) => book.favorite)
+    const filteredBooks: NewBookResponse[] = newBooks.filter((book) => book.favorite)
 
     if (filteredBooks.length > 0) {
       return filteredBooks.map((book) => {
@@ -40,14 +25,14 @@ export function FavoriteBooks() {
   }
 
   function handleClickFavorite(event: React.MouseEvent<HTMLDivElement>) {
-    toggleFavorite(event, dispatch, favoritesNewBooks)
+    toggleFavorite(event, dispatch, newBooks)
   }
 
   return (
     <>
       <Title>Your favorite Books</Title>
       <Container className="container_books" onClick={handleClickFavorite}>
-        {favoritesNewBooks.length && renderMyFavoritesBooks()}
+        {newBooks.length && renderMyFavoritesBooks()}
       </Container>
     </>
   )

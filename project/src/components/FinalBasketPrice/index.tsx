@@ -7,8 +7,6 @@ import { FinalBasketPriceProps } from "../../interfeces/FinalBasketPriceProps"
 export function FinalBasketPrice({ data }: FinalBasketPriceProps): JSX.Element {
   const vatPrice = 12.5
 
-  console.log(data)
-
   function getBooksSum(data: NewBookResponse[]): number {
     return data.reduce((sum, book) => {
       const priceWithoutDollar = book.price.replace('$', '')
@@ -16,12 +14,14 @@ export function FinalBasketPrice({ data }: FinalBasketPriceProps): JSX.Element {
       if (!isNaN(price)) {
         return sum + book.count * price
       }
-      return sum
+      return Math.ceil(sum * 100) / 100
     }, 0)
   }
 
   function getFinalRrice(): number {
-    return getBooksSum(data) + vatPrice
+    const booksSum = getBooksSum(data)
+    const finalPrice = booksSum + vatPrice
+    return parseFloat(finalPrice.toFixed(2))
   }
 
   return (

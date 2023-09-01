@@ -3,7 +3,6 @@ import { takeEvery } from "redux-saga/effects"
 import { configureStore } from "@reduxjs/toolkit"
 
 import { newBooksReducer } from "./newBooksSlice"
-import { myFavoriteReducer } from "./myFavoriteSlice"
 import { GET_BOOK, getBookSaga, bookReducer } from "./bookSlice"
 import { basketBooksReducer } from "./basketBookSlice"
 
@@ -17,7 +16,6 @@ export const store = configureStore({
   reducer: {
     newBooks: newBooksReducer,
     bookWithDetails: bookReducer,
-    myFavorites: myFavoriteReducer,
     basketBooks: basketBooksReducer,
   },
 

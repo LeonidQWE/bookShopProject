@@ -1,11 +1,11 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-// import { BookForBasket, BasketBooksState } from "../interfeces/books";
-import { NewBookResponse, BasketBooksState } from "../interfeces/redux";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit"
+import { NewBookResponse, BasketBooksState } from "../interfeces/redux"
+import { getDataFromLocalStorage, setDataInLocalStorage } from "../helpers"
 
 const basketBooksSlice = createSlice({
   name: "basketBooks",
   initialState: {
-    basketBooks: [],
+    basketBooks: getDataFromLocalStorage("basketBooks"),
   } as BasketBooksState,
 
   reducers: {
@@ -15,13 +15,14 @@ const basketBooksSlice = createSlice({
       const result = updatedBasketBooks.reduce((acc: NewBookResponse[], item: NewBookResponse) => {
         const existingBook = acc.find((book: NewBookResponse) => book.isbn13 === item.isbn13);
         if (existingBook) {
-          existingBook.count += item.count;
+          existingBook.count += item.count
         } else {
-          acc.push({ ...item });
+          acc.push({ ...item })
         }
         return acc;
       }, []);
-      state.basketBooks = result;
+      state.basketBooks = result
+      setDataInLocalStorage("basketBooks", state.basketBooks)
     },
   }
 })
