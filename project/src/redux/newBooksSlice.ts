@@ -19,6 +19,8 @@ const newBooksSlice = createSlice({
     loading: false,
     error: false,
     searchQuery: '',
+    currentPage: 1,
+    limit: 6,
   } as NewBooksState,
 
   reducers: {
@@ -38,8 +40,12 @@ const newBooksSlice = createSlice({
           state.newBooks.push(updatedBook)
         }
         setDataInLocalStorage('favoritesBooks', state.newBooks)
-      });
+      })
     },
+
+    setPage: (state, action: PayloadAction<number>) => {
+      state.currentPage = action.payload
+    }
   },
 
   extraReducers: builder => {
@@ -50,6 +56,7 @@ const newBooksSlice = createSlice({
       state.loading = false
       state.newBooks = action.payload
       setDataInLocalStorage('favoritesBooks', state.newBooks)
+      // state.currentPage = Math.ceil(state.newBooks.length / state.limit)
     })
     builder.addCase(fetchNewBooks.rejected, state => {
       state.loading = false
@@ -58,6 +65,6 @@ const newBooksSlice = createSlice({
   }
 })
 
-export const { setSearchQuery, setMyFavorites } = newBooksSlice.actions
+export const { setSearchQuery, setMyFavorites, setPage } = newBooksSlice.actions
 export const newBooksReducer = newBooksSlice.reducer
 

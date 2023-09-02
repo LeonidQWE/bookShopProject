@@ -1,0 +1,24 @@
+.pagination {
+  &__list {
+    text-decoration: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    list-style: none;
+    display: inline-block;
+    padding: 0.5rem;
+
+    & a {
+      text-decoration: none;
+      color: gray;
+
+      &.active {
+        color: #000;
+        font-weight: 600;
+      }
+    }
+  }
+}

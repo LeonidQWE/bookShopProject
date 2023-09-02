@@ -19,6 +19,10 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
+        element: <Navigate to="/new_books/pages/1" replace={true} />
+      },
+      {
+        path: '/new_books/pages/:pageNumber',
         element: <Books />
       },
       {

@@ -43,6 +43,8 @@ export interface NewBooksState {
   loading: boolean
   error: boolean
   searchQuery: string
+  currentPage: number
+  limit: number
 }
 
 export interface BookState {

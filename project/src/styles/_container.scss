@@ -34,4 +34,9 @@
     margin: 2rem 0;
     float: right;
   }
+
+  &_pagination {
+    display: flex;
+    justify-content: space-between;
+  }
 }
