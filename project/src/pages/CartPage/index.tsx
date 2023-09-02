@@ -5,16 +5,16 @@ import { updateBasketBooks } from "../../helpers"
 import { Container } from "../../components/Container"
 import { HomeLink } from "../../components/HomeLink"
 import { Title } from "../../components/Title"
-import { BasketBook } from "../../components/BasketBook"
+import { Cart } from "../../components/Cart"
 import { FinalBasketPrice } from "../../components/FinalBasketPrice"
 
-export function BasketPage() {
+export function CartPage() {
   const dispatch = useAppDispatch()
   const { basketBooks } = useAppSelector(state => state.basketBooks)
 
   function renderBasketBooks() {
     if (basketBooks.length > 0) {
-      return basketBooks.map((book) => <BasketBook key={book.isbn13} data={book} />)
+      return basketBooks.map((book) => <Cart key={book.isbn13} data={book} />)
     } else {
       return <h2>Your basket is empty</h2>
     }

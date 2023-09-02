@@ -1,6 +1,6 @@
 import { Dispatch } from "redux"
 import { setMyFavorites } from "../redux/newBooksSlice"
-import { setBasketBooks } from "../redux/basketBookSlice"
+import { setBasketBooks } from "../redux/cartSlice"
 import { NewBookResponse } from "../interfeces/redux"
 
 // Hendlers

@@ -36,9 +36,6 @@ export function Books(): JSX.Element {
   }
 
   function renderBooks(): JSX.Element[] {
-    if (newBooks.length === 0) {
-      return newBooks.map((book) => <Book key={book.isbn13} data={book} />)
-    }
     return newBooks.map((book) => <Book key={book.isbn13} data={book} />)
   }
 

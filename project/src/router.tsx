@@ -11,7 +11,7 @@ import { SignUp } from "./pages/SignUp"
 import { Account } from "./pages/Account"
 import { SingleBookPage } from "./pages/SingleBookPage"
 import { SearchPage } from "./pages/SearchPage"
-import { BasketPage } from "./pages/BasketPage"
+import { CartPage } from "./pages/CartPage"
 
 export const router = createBrowserRouter([
   {
@@ -35,7 +35,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/basket',
-        element: <BasketPage />
+        element: <CartPage />
       },
       {
         path: '/user_page',

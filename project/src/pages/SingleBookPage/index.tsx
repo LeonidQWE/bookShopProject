@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 
 import { useAppDispatch, useAppSelector } from "../../hooks/inedx"
 import { getBook } from "../../redux/bookSlice"
-import { setBasketBooks } from "../../redux/basketBookSlice"
+import { setBasketBooks } from "../../redux/cartSlice"
 // import { loadInformationInLocalStorage } from "../../helpers"
 import { NewBookResponse } from "../../interfeces/redux"
 
