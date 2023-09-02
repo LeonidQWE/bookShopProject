@@ -10,6 +10,8 @@ import { Loading } from "../../components/Loading"
 import { Error } from "../../components/Error"
 import { Book } from "../../components/Book"
 import { Pagination } from "../../components/Pagination"
+import { Button } from "../../components/Button"
+
 
 import { toggleFavorite, getDataFromLocalStorage } from "../../helpers"
 
@@ -89,15 +91,13 @@ export function Books(): JSX.Element {
         )}
       </Container>
       <Container className="container_pagination" onClick={handleClickPage}>
-        <button data-role="decrementPage">
+        <Button variant="pagination" type="button" role="decrementPage">
           <img src={prevPage} alt="" />
-          prev
-        </button>
+          prev</Button>
         <Pagination books={newBooks} limit={limit} />
-        <button data-role="incrementPage">
-          <img src={nextPage} alt="" />
+        <Button variant="pagination" type="button" role="incrementPage">
           next
-        </button>
+          <img src={nextPage} alt="" /></Button>
       </Container>
     </>
   )

@@ -18,4 +18,13 @@
   &_small {
     width: 30%;
   }
+
+  &_pagination {
+    background-color: transparent;
+    color: #000;
+    border: 1px solid transparent;
+
+    display: flex;
+    gap: 0.5rem;
+  }
 }
