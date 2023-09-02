@@ -56,7 +56,6 @@ const newBooksSlice = createSlice({
       state.loading = false
       state.newBooks = action.payload
       setDataInLocalStorage('favoritesBooks', state.newBooks)
-      // state.currentPage = Math.ceil(state.newBooks.length / state.limit)
     })
     builder.addCase(fetchNewBooks.rejected, state => {
       state.loading = false

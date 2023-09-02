@@ -13,7 +13,7 @@ import { Pagination } from "../../components/Pagination"
 import { Button } from "../../components/Button"
 
 
-import { toggleFavorite, getDataFromLocalStorage } from "../../helpers"
+import { toggleFavorite, getDataFromLocalStorage, togglePage } from "../../helpers"
 
 import prevPage from '../../images/prevPag.svg'
 import nextPage from '../../images/nextPag.svg'
@@ -48,6 +48,10 @@ export function Books(): JSX.Element {
     toggleFavorite(event, dispatch, newBooks)
   }
 
+  function handleClickPage (event: React.MouseEvent<HTMLDivElement>) {
+    togglePage(event, dispatch, newBooks, currentPage, limit, navigate)
+  }
+
   function renderBooks(): JSX.Element[] {
     const startIndex = (currentPage - 1) * limit
     const endIndex = startIndex + limit
@@ -55,29 +59,6 @@ export function Books(): JSX.Element {
     return newBooks.slice(startIndex, endIndex).map((book) => (
       <Book key={book.isbn13} data={book} />
     ))
-  }
-
-  function handleClickPage (event: React.MouseEvent<HTMLDivElement>) {
-    const target = event.target as HTMLElement
-    const { page, role } = target.dataset as { page: string, role: string }
-
-    if (role === 'getPage') {
-      dispatch(setPage(Number(page)))
-    }
-
-    if (role === 'decrementPage') {
-      if (currentPage > 1) {
-        dispatch(setPage(currentPage - 1))
-        navigate(`/new_books/pages/${currentPage - 1}`)
-      } else return
-    }
-
-    if (role === 'incrementPage') {
-      if ( currentPage < Math.ceil(newBooks.length / limit)) {
-        dispatch(setPage(currentPage + 1))
-        navigate(`/new_books/pages/${currentPage + 1}`)
-      }
-    }
   }
 
   return (
@@ -94,7 +75,7 @@ export function Books(): JSX.Element {
         <Button variant="pagination" type="button" role="decrementPage">
           <img src={prevPage} alt="" />
           prev</Button>
-        <Pagination books={newBooks} limit={limit} />
+        <Pagination books={newBooks} limit={limit} pageNumber={pageNumberCount}/>
         <Button variant="pagination" type="button" role="incrementPage">
           next
           <img src={nextPage} alt="" /></Button>
