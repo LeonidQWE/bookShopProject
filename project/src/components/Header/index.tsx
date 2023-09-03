@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 
 import { useAppDispatch } from "../../hooks/inedx"
 import { setSearchQuery } from "../../redux/newBooksSlice"
+import { setPage } from "../../redux/newBooksSlice"
 
 import favorite from '../../images/favorite.svg'
 import basket from '../../images/basket.svg'
@@ -30,9 +31,13 @@ export function Header(): JSX.Element {
     setQuery(e.target.value)
   }
 
+  function handleClickLogo() {
+    dispatch(setPage(1))
+  }
+
   return (
     <header className="header">
-      <NavLink to="/">
+      <NavLink to="/" onClick={handleClickLogo}>
         <span className="header__logo">bookstore</span>
       </NavLink>
       <form action="" onSubmit={handleSubmitSearch}>

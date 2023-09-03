@@ -11,10 +11,9 @@ export function Pagination({ books, limit, pageNumber }: PaginationProps): JSX.E
     const filteredScheme = scheme.filter(item => item > 0 && item <= maxPageNumber)
     const set = new Set(filteredScheme)
     const result: (number | string)[] = Array.from(set) as (number | string)[]
-    console.log(result)
 
-    if (parseInt(result[0] as string) + 1 !== parseInt(result[1] as string)) result.splice(1, 0, '...');
-    if (parseInt(result[result.length - 2] as string) + 1 !== parseInt(result[result.length - 1] as string)) result.splice(result.length - 1, 0, '...');
+    if (parseInt(result[0] as string) + 1 !== parseInt(result[1] as string)) result.splice(1, 0, '...')
+    if (parseInt(result[result.length - 2] as string) + 1 !== parseInt(result[result.length - 1] as string)) result.splice(result.length - 1, 0, '...')
     return result
   }
 
@@ -34,7 +33,8 @@ export function Pagination({ books, limit, pageNumber }: PaginationProps): JSX.E
             className={({ isActive }) => (isActive ? "pagination__link active" : "pagination__link")}>
             {page}
           </NavLink>
-        </li>)
+        </li>
+      )
     })
   }
 

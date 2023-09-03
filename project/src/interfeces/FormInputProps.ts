@@ -6,4 +6,6 @@ export interface FormInputProps {
   placeholder: string
   id: string
   htmlFor: string
+  value: string
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }

@@ -6,15 +6,20 @@ import { FormInput } from "../../components/FormInput"
 import { Message } from "../../components/Message"
 
 export function ResetPassword() {
+  const [email, setEmail] = useState('')
   const [showMessage, setShowMessage] = useState(false)
 
   function handleSubmitEmail(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setShowMessage(true)
 
+    console.log(`email: ${email}`)
+
     setTimeout(() => {
       window.location.href = '/account'
     }, 2000)
+
+    setEmail('')
   }
 
   return (
@@ -27,7 +32,9 @@ export function ResetPassword() {
         type="email"
         placeholder="Your email"
         id="resetPasswordEmail"
-        htmlFor="resetPasswordEmail">Email</FormInput>
+        htmlFor="resetPasswordEmail"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}>Email</FormInput>
     </UserForm>
   )
 }
