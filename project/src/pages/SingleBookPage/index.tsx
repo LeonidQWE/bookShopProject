@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
 import { useAppDispatch, useAppSelector } from "../../hooks/inedx"
@@ -22,6 +22,7 @@ export function SingleBookPage(): JSX.Element {
   const {bookWithDetails, loadingDetails, errorDetails} = useAppSelector(state => state.bookWithDetails)
   const { newBooks } = useAppSelector(state => state.newBooks)
   const { isbn13 } = useParams()
+  const [email, setEmail] = useState('')
   const bookId: string | undefined = isbn13
 
   const { basketBooks } = useAppSelector(state => state.basketBooks)
@@ -53,6 +54,7 @@ export function SingleBookPage(): JSX.Element {
     if (target.tagName === 'BUTTON') {
       const bookWithCounts: NewBookResponse = { ...bookWithDetails, favorite: false, count: 1 }
       dispatch(setBasketBooks([...basketBooks, bookWithCounts]))
+      alert('Book added to basket')
     }
   }
 
@@ -68,7 +70,9 @@ export function SingleBookPage(): JSX.Element {
             type="email"
             placeholder="Your email"
             id="newsletterEmail"
-            htmlFor="newsletterEmail">Be the first to know about new IT books, upcoming releases, exclusive offers and more.</FormInput>
+            htmlFor="newsletterEmail"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}>Be the first to know about new IT books, upcoming releases, exclusive offers and more.</FormInput>
           <Button variant="small" type="submit">Subscribe</Button>
         </UserForm>
       </Container>
