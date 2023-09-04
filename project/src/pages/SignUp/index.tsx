@@ -1,8 +1,8 @@
-import { useState } from "react"
+import { useState } from 'react'
 
-import { FormInput } from "../../components/FormInput"
-import { Button } from "../../components/Button"
-import { UserForm } from "../../components/UserForm"
+import { FormInput } from '../../components/FormInput'
+import { Button } from '../../components/Button'
+import { UserForm } from '../../components/UserForm'
 
 export function SignUp() {
   const [name, setName] = useState('')

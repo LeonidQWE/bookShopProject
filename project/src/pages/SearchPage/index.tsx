@@ -1,13 +1,13 @@
-import { useEffect } from "react"
+import { useEffect } from 'react'
 
-import { fetchNewBooks } from "../../redux/newBooksSlice"
-import { useAppDispatch, useAppSelector } from "../../hooks/inedx"
+import { fetchNewBooks } from '../../redux/newBooksSlice'
+import { useAppDispatch, useAppSelector } from '../../hooks/inedx'
 
-import { Title } from "../../components/Title"
-import { Container } from "../../components/Container"
-import { Loading } from "../../components/Loading"
-import { Error } from "../../components/Error"
-import { Book } from "../../components/Book"
+import { Title } from '../../components/Title'
+import { Container } from '../../components/Container'
+import { Loading } from '../../components/Loading'
+import { Error } from '../../components/Error'
+import { Book } from '../../components/Book'
 
 export const SearchPage: React.FC = () => {
   const dispatch = useAppDispatch()

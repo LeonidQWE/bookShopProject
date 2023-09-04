@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"
-import { requestNewBooks, requestBookByIsbn13 } from "../services/books"
-import { NewBookResponse, NewBooksState } from "../interfeces/redux"
-import { setDataInLocalStorage, getDataFromLocalStorage } from "../helpers"
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
+import { requestNewBooks, requestBookByIsbn13 } from '../services/books'
+import { NewBookResponse, NewBooksState } from '../interfeces/redux'
+import { setDataInLocalStorage, getDataFromLocalStorage } from '../helpers'
 
 export const fetchNewBooks = createAsyncThunk( 'newBooks/fetchNewBooks', async (searchQuery?: string) => {
   const { books } = await requestNewBooks(searchQuery)

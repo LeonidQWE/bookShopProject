@@ -1,10 +1,10 @@
-import { NavLink } from "react-router-dom"
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { NavLink } from 'react-router-dom'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-import { useAppDispatch } from "../../hooks/inedx"
-import { setSearchQuery } from "../../redux/newBooksSlice"
-import { setPage } from "../../redux/newBooksSlice"
+import { useAppDispatch } from '../../hooks/inedx'
+import { setSearchQuery } from '../../redux/newBooksSlice'
+import { setPage } from '../../redux/newBooksSlice'
 
 import favorite from '../../images/favorite.svg'
 import basket from '../../images/basket.svg'

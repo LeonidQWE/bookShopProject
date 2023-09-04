@@ -1,4 +1,4 @@
-import { BookResponse } from "./redux"
+import { BookResponse } from './redux'
 
 export interface BookInfoProps {
   data: BookResponse

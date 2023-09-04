@@ -1,10 +1,10 @@
-import createSagaMiddleware from "@redux-saga/core"
-import { takeEvery } from "redux-saga/effects"
-import { configureStore } from "@reduxjs/toolkit"
+import createSagaMiddleware from '@redux-saga/core'
+import { takeEvery } from 'redux-saga/effects'
+import { configureStore } from '@reduxjs/toolkit'
 
-import { newBooksReducer } from "./newBooksSlice"
-import { GET_BOOK, getBookSaga, bookReducer } from "./bookSlice"
-import { cartReducer } from "./cartSlice"
+import { newBooksReducer } from './newBooksSlice'
+import { GET_BOOK, getBookSaga, bookReducer } from './bookSlice'
+import { cartReducer } from './cartSlice'
 
 const sagaMiddleware = createSagaMiddleware()
 

@@ -1,17 +1,17 @@
-import { createBrowserRouter, Navigate } from "react-router-dom"
+import { createBrowserRouter, Navigate } from 'react-router-dom'
 
-import { Layout } from "./components/Layout"
-import { Books } from "./pages/Books"
-import { FavoriteBooks } from "./pages/FavoriteBooks"
-import { UserPage } from "./pages/UserPage"
-import { Autorization } from "./pages/Autorization"
-import { ResetPassword } from "./pages/ResetPassword"
-import { SignIn } from "./pages/SignIn"
-import { SignUp } from "./pages/SignUp"
-import { Account } from "./pages/Account"
-import { SingleBookPage } from "./pages/SingleBookPage"
-import { SearchPage } from "./pages/SearchPage"
-import { CartPage } from "./pages/CartPage"
+import { Layout } from './components/Layout'
+import { Books } from './pages/Books'
+import { FavoriteBooks } from './pages/FavoriteBooks'
+import { UserPage } from './pages/UserPage'
+import { Autorization } from './pages/Autorization'
+import { ResetPassword } from './pages/ResetPassword'
+import { SignIn } from './pages/SignIn'
+import { SignUp } from './pages/SignUp'
+import { Account } from './pages/Account'
+import { SingleBookPage } from './pages/SingleBookPage'
+import { SearchPage } from './pages/SearchPage'
+import { CartPage } from './pages/CartPage'
 
 export const router = createBrowserRouter([
   {

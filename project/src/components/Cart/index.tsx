@@ -1,8 +1,8 @@
-import { BasketBookProps } from "../../interfeces/BasketBookProps"
+import { CartProps } from '../../interfeces/BasketBookProps'
 
-import deleteButton from "../../images/delete.svg"
+import deleteButton from '../../images/delete.svg'
 
-export function Cart({ data }: BasketBookProps): JSX.Element {
+export function Cart({ data }: CartProps): JSX.Element {
   return (
     <div className="basket-book">
       <div className="basket-book__preview">

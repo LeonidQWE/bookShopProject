@@ -1,4 +1,4 @@
-import { MainProps } from "../../interfeces/MainProps"
+import { MainProps } from '../../interfeces/MainProps'
 
 export function Main (props: MainProps): JSX.Element {
   return (

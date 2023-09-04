@@ -1,10 +1,10 @@
-import { useAppSelector, useAppDispatch } from "../../hooks/inedx"
-import { toggleFavorite } from "../../helpers"
-import { NewBookResponse } from "../../interfeces/redux"
+import { useAppSelector, useAppDispatch } from '../../hooks/inedx'
+import { toggleFavorite } from '../../helpers'
+import { NewBookResponse } from '../../interfeces/redux'
 
-import { Title } from "../../components/Title"
-import { Book } from "../../components/Book"
-import { Container } from "../../components/Container"
+import { Title } from '../../components/Title'
+import { Book } from '../../components/Book'
+import { Container } from '../../components/Container'
 
 export function FavoriteBooks() {
   const dispatch = useAppDispatch()

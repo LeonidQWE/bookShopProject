@@ -1,4 +1,4 @@
-import { SubtitleProps } from "../../interfeces/SubtitleProps"
+import { SubtitleProps } from '../../interfeces/SubtitleProps'
 
 export function Subtitle ({ children }: SubtitleProps): JSX.Element {
   return (

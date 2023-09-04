@@ -1,11 +1,11 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import { NewBookResponse, BasketBooksState } from "../interfeces/redux"
-import { getDataFromLocalStorage, setDataInLocalStorage } from "../helpers"
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { NewBookResponse, BasketBooksState } from '../interfeces/redux'
+import { getDataFromLocalStorage, setDataInLocalStorage } from '../helpers'
 
 const cartSlice = createSlice({
-  name: "basketBooks",
+  name: 'basketBooks',
   initialState: {
-    basketBooks: getDataFromLocalStorage("basketBooks"),
+    basketBooks: getDataFromLocalStorage('basketBooks'),
   } as BasketBooksState,
 
   reducers: {

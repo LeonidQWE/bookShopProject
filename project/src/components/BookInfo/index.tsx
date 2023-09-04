@@ -1,10 +1,10 @@
-import { useState } from "react"
+import { useState } from 'react'
 
-import { BookInfoProps } from "../../interfeces/BookInfoProps"
+import { BookInfoProps } from '../../interfeces/BookInfoProps'
 
-import { Title } from "../Title"
-import { Rating } from "../Rating"
-import { Button } from "../Button"
+import { Title } from '../Title'
+import { Rating } from '../Rating'
+import { Button } from '../Button'
 
 export function BookInfo({ data, onClick }: BookInfoProps): JSX.Element {
   const [selectedOption, setSelectedOption] = useState('description')

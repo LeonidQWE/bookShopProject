@@ -1,6 +1,6 @@
-import { Outlet } from "react-router-dom"
+import { Outlet } from 'react-router-dom'
 
-import { Container } from "../../components/Container"
+import { Container } from '../../components/Container'
 
 export function UserPage(): JSX.Element {
   return (

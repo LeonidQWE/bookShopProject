@@ -1,7 +1,7 @@
-import { RatingProps } from "../../interfeces/RatingProps"
+import { RatingProps } from '../../interfeces/RatingProps'
 
-import activeStar from "../../images/activeStar.svg"
-import mutedStar from "../../images/mutedStar.svg"
+import activeStar from '../../images/activeStar.svg'
+import mutedStar from '../../images/mutedStar.svg'
 
 export function Rating ({ rating }: RatingProps): JSX.Element {
   const parsedRating = parseInt(rating, 10)

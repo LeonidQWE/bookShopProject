@@ -1,4 +1,4 @@
-import { TitleProps } from "../../interfeces/Title"
+import { TitleProps } from '../../interfeces/Title'
 
 export function Title ({ children }: TitleProps): JSX.Element {
   return (

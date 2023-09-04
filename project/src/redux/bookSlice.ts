@@ -1,8 +1,8 @@
-import { createSlice, createAction, PayloadAction } from "@reduxjs/toolkit"
-import { put } from "redux-saga/effects"
-import { requestBookByIsbn13 } from "../services/books"
+import { createSlice, createAction, PayloadAction } from '@reduxjs/toolkit'
+import { put } from 'redux-saga/effects'
+import { requestBookByIsbn13 } from '../services/books'
 
-import { BookResponse, BookState } from "../interfeces/redux"
+import { BookResponse, BookState } from '../interfeces/redux'
 
 export function* getBookSaga({ payload: isbn13}: PayloadAction<string>) {
   yield put(setLoading(true))
@@ -40,7 +40,7 @@ const bookSlice = createSlice({
   }
 })
 
-export const GET_BOOK = 'book/GET_BOOK'
+export const GET_BOOK = 'book/getBook'
 export const getBook = createAction<string>(GET_BOOK)
 export const { getBookSucces, setLoading, setError } = bookSlice.actions
 export const bookReducer = bookSlice.reducer

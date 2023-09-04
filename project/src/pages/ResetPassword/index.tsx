@@ -1,9 +1,9 @@
-import { useState } from "react"
+import { useState } from 'react'
 
-import { UserForm } from "../../components/UserForm"
-import { Subtitle } from "../../components/Subtitle"
-import { FormInput } from "../../components/FormInput"
-import { Message } from "../../components/Message"
+import { UserForm } from '../../components/UserForm'
+import { Subtitle } from '../../components/Subtitle'
+import { FormInput } from '../../components/FormInput'
+import { Message } from '../../components/Message'
 
 export function ResetPassword() {
   const [email, setEmail] = useState('')

@@ -1,5 +1,5 @@
-import { BookForBasket } from "../interfeces/books"
+import { NewBookResponse } from "./redux"
 
-export interface BasketBookProps {
-  data: BookForBasket
+export interface CartProps {
+  data: NewBookResponse
 }

@@ -1,21 +1,21 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
-import { useAppDispatch, useAppSelector } from "../../hooks/inedx"
-import { getBook } from "../../redux/bookSlice"
-import { setBasketBooks } from "../../redux/cartSlice"
-import { NewBookResponse } from "../../interfeces/redux"
+import { useAppDispatch, useAppSelector } from '../../hooks/inedx'
+import { getBook } from '../../redux/bookSlice'
+import { setBasketBooks } from '../../redux/cartSlice'
+import { NewBookResponse } from '../../interfeces/redux'
 
-import { HomeLink } from "../../components/HomeLink"
-import { BookInfo } from "../../components/BookInfo"
-import { Loading } from "../../components/Loading"
-import { Error } from "../../components/Error"
-import { Container } from "../../components/Container"
-import { Subtitle } from "../../components/Subtitle"
-import { UserForm } from "../../components/UserForm"
-import { FormInput } from "../../components/FormInput"
-import { Button } from "../../components/Button"
-import { Book } from "../../components/Book"
+import { HomeLink } from '../../components/HomeLink'
+import { BookInfo } from '../../components/BookInfo'
+import { Loading } from '../../components/Loading'
+import { Error } from '../../components/Error'
+import { Container } from '../../components/Container'
+import { Subtitle } from '../../components/Subtitle'
+import { UserForm } from '../../components/UserForm'
+import { FormInput } from '../../components/FormInput'
+import { Button } from '../../components/Button'
+import { Book } from '../../components/Book'
 
 export function SingleBookPage(): JSX.Element {
   const dispatch = useAppDispatch()

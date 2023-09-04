@@ -1,12 +1,12 @@
-import { useAppSelector, useAppDispatch } from "../../hooks/inedx"
+import { useAppSelector, useAppDispatch } from '../../hooks/inedx'
 
-import { updateBasketBooks } from "../../helpers"
+import { updateBasketBooks } from '../../helpers'
 
-import { Container } from "../../components/Container"
-import { HomeLink } from "../../components/HomeLink"
-import { Title } from "../../components/Title"
-import { Cart } from "../../components/Cart"
-import { FinalBasketPrice } from "../../components/FinalBasketPrice"
+import { Container } from '../../components/Container'
+import { HomeLink } from '../../components/HomeLink'
+import { Title } from '../../components/Title'
+import { Cart } from '../../components/Cart'
+import { FinalBasketPrice } from '../../components/FinalBasketPrice'
 
 export function CartPage() {
   const dispatch = useAppDispatch()

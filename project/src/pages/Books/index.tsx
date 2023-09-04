@@ -1,19 +1,19 @@
-import React, { useEffect } from "react"
-import { useParams, useNavigate } from "react-router-dom"
+import React, { useEffect } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 
-import { useAppDispatch, useAppSelector } from "../../hooks/inedx"
-import { fetchNewBooks, setMyFavorites, setPage } from "../../redux/newBooksSlice"
+import { useAppDispatch, useAppSelector } from '../../hooks/inedx'
+import { fetchNewBooks, setMyFavorites, setPage } from '../../redux/newBooksSlice'
 
-import { Title } from "../../components/Title"
-import { Container } from "../../components/Container"
-import { Loading } from "../../components/Loading"
-import { Error } from "../../components/Error"
-import { Book } from "../../components/Book"
-import { Pagination } from "../../components/Pagination"
-import { Button } from "../../components/Button"
+import { Title } from '../../components/Title'
+import { Container } from '../../components/Container'
+import { Loading } from '../../components/Loading'
+import { Error } from '../../components/Error'
+import { Book } from '../../components/Book'
+import { Pagination } from '../../components/Pagination'
+import { Button } from '../../components/Button'
 
 
-import { toggleFavorite, getDataFromLocalStorage, togglePage } from "../../helpers"
+import { toggleFavorite, getDataFromLocalStorage, togglePage } from '../../helpers'
 
 import prevPage from '../../images/prevPag.svg'
 import nextPage from '../../images/nextPag.svg'

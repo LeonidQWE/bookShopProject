@@ -1,6 +1,6 @@
-import { client } from "../utils/client"
-import { newBooksEndPoint, bookEndPoint } from "../api"
-import { BooksState, BookResponse } from "../interfeces/redux"
+import { client } from '../utils/client'
+import { newBooksEndPoint, bookEndPoint } from '../api'
+import { BooksState, BookResponse } from '../interfeces/redux'
 
 export const requestNewBooks = async (searchQuery?: string): Promise<BooksState> => {
   const { data } = await client.get(newBooksEndPoint, {

@@ -1,11 +1,11 @@
-import { useState } from "react"
+import { useState } from 'react'
 
-import { Title } from "../../components/Title"
-import { Subtitle } from "../../components/Subtitle"
-import { UserForm } from "../../components/UserForm"
-import { FormInput } from "../../components/FormInput"
-import { HomeLink } from "../../components/HomeLink"
-import { Button } from "../../components/Button"
+import { Title } from '../../components/Title'
+import { Subtitle } from '../../components/Subtitle'
+import { UserForm } from '../../components/UserForm'
+import { FormInput } from '../../components/FormInput'
+import { HomeLink } from '../../components/HomeLink'
+import { Button } from '../../components/Button'
 
 export function Account() {
   const [name, setName] = useState('')
