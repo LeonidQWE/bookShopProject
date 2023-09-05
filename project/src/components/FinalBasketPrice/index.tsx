@@ -1,8 +1,8 @@
 import { Button } from '../Button'
 import { UserForm } from '../UserForm'
 
-import { NewBookResponse } from '../../interfeces/redux'
-import { FinalBasketPriceProps } from '../../interfeces/FinalBasketPriceProps'
+import { NewBookResponse } from '../../types/interfeces/redux'
+import { FinalBasketPriceProps } from '../../types/interfeces/FinalBasketPriceProps'
 
 export function FinalBasketPrice({ data }: FinalBasketPriceProps): JSX.Element {
   const vatPrice = 12.5

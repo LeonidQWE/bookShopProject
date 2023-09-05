@@ -1,4 +1,4 @@
-import { UserFormProps } from '../../interfeces/UserFormProps'
+import { UserFormProps } from '../../types/interfeces/UserFormProps'
 
 export function UserForm ({ children, onSubmit }: UserFormProps): React.ReactElement {
   return (

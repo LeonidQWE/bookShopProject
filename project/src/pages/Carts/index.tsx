@@ -8,7 +8,7 @@ import { Title } from '../../components/Title'
 import { Cart } from '../../components/Cart'
 import { FinalBasketPrice } from '../../components/FinalBasketPrice'
 
-export function CartPage() {
+export function Carts() {
   const dispatch = useAppDispatch()
   const { basketBooks } = useAppSelector(state => state.basketBooks)
 

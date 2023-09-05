@@ -3,15 +3,15 @@ import { createBrowserRouter, Navigate } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { Books } from './pages/Books'
 import { FavoriteBooks } from './pages/FavoriteBooks'
-import { UserPage } from './pages/UserPage'
+import { User } from './pages/User'
 import { Autorization } from './pages/Autorization'
 import { ResetPassword } from './pages/ResetPassword'
 import { SignIn } from './pages/SignIn'
 import { SignUp } from './pages/SignUp'
 import { Account } from './pages/Account'
-import { SingleBookPage } from './pages/SingleBookPage'
-import { SearchPage } from './pages/SearchPage'
-import { CartPage } from './pages/CartPage'
+import { SingleBook } from './pages/SingleBook'
+import { Search } from './pages/Search'
+import { Carts } from './pages/Carts'
 
 export const router = createBrowserRouter([
   {
@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/:isbn13',
-        element: <SingleBookPage />
+        element: <SingleBook />
       },
       {
         path: '/favorite_books',
@@ -35,15 +35,15 @@ export const router = createBrowserRouter([
       },
       {
         path: '/search/:searchQuery',
-        element: <SearchPage />
+        element: <Search />
       },
       {
         path: '/basket',
-        element: <CartPage />
+        element: <Carts />
       },
       {
         path: '/user_page',
-        element: <UserPage />,
+        element: <User />,
         children: [
           {
             path: '/user_page/',

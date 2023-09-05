@@ -1,4 +1,4 @@
-import { RatingProps } from '../../interfeces/RatingProps'
+import { RatingProps } from '../../types/interfeces/RatingProps'
 
 import activeStar from '../../images/activeStar.svg'
 import mutedStar from '../../images/mutedStar.svg'

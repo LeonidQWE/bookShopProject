@@ -1,4 +1,4 @@
-import { MessageProps } from '../../interfeces/MessageProps'
+import { MessageProps } from '../../types/interfeces/MessageProps'
 
 export function Message ({children}: MessageProps): JSX.Element {
   return (

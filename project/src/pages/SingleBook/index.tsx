@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../hooks/inedx'
 import { getBook } from '../../redux/bookSlice'
 import { setBasketBooks } from '../../redux/cartSlice'
-import { NewBookResponse } from '../../interfeces/redux'
+import { NewBookResponse } from '../../types/interfeces/redux'
 
 import { HomeLink } from '../../components/HomeLink'
 import { BookInfo } from '../../components/BookInfo'
@@ -17,7 +17,7 @@ import { FormInput } from '../../components/FormInput'
 import { Button } from '../../components/Button'
 import { Book } from '../../components/Book'
 
-export function SingleBookPage(): JSX.Element {
+export function SingleBook(): JSX.Element {
   const dispatch = useAppDispatch()
   const {bookWithDetails, loadingDetails, errorDetails} = useAppSelector(state => state.bookWithDetails)
   const { newBooks } = useAppSelector(state => state.newBooks)

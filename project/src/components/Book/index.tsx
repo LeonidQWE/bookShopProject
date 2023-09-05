@@ -4,7 +4,7 @@ import { Rating } from '../Rating'
 
 import activeFavorite from '../../images/activeFavorite.svg'
 import mutedFavorite from '../../images/mutedFavorite.svg'
-import { BookProps } from '../../interfeces/BookProps'
+import { BookProps } from '../../types/interfeces/BookProps'
 
 export function Book({ data }: BookProps): JSX.Element {
   return (

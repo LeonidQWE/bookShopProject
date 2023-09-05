@@ -1,4 +1,4 @@
-import { ButtonProps } from '../../interfeces/ButtonProps'
+import { ButtonProps } from '../../types/interfeces/ButtonProps'
 
 export function Button ({ children, type, variant, onClick, role }: ButtonProps): JSX.Element {
   const big = variant === 'big' ? 'button_big' : ''

@@ -1,6 +1,6 @@
 import { useAppSelector, useAppDispatch } from '../../hooks/inedx'
 import { toggleFavorite } from '../../helpers'
-import { NewBookResponse } from '../../interfeces/redux'
+import { NewBookResponse } from '../../types/interfeces/redux'
 
 import { Title } from '../../components/Title'
 import { Book } from '../../components/Book'

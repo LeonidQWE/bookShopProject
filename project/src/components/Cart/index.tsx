@@ -1,4 +1,4 @@
-import { CartProps } from '../../interfeces/BasketBookProps'
+import { CartProps } from '../../types/interfeces/BasketBookProps'
 
 import deleteButton from '../../images/delete.svg'
 

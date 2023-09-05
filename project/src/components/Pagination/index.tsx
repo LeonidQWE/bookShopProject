@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 
-import { PaginationProps } from '../../interfeces/PaginationProps'
+import { PaginationProps } from '../../types/interfeces/PaginationProps'
 
 export function Pagination({ books, limit, pageNumber }: PaginationProps): JSX.Element {
   function buildPaginationScheme() {

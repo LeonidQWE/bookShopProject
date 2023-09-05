@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { LinkMessageProps } from '../../interfeces/LinkMessageProps'
+import { LinkMessageProps } from '../../types/interfeces/LinkMessageProps'
 
 export function LinkMessage ({ children, to, className }: LinkMessageProps): JSX.Element {
   return (

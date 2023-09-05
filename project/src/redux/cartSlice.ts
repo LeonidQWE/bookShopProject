@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { NewBookResponse, BasketBooksState } from '../interfeces/redux'
+import { NewBookResponse, BasketBooksState } from '../types/interfeces/redux'
 import { getDataFromLocalStorage, setDataInLocalStorage } from '../helpers'
 
 const cartSlice = createSlice({

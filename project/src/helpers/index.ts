@@ -2,7 +2,7 @@ import { Dispatch } from 'redux'
 import { setMyFavorites } from '../redux/newBooksSlice'
 import { setBasketBooks } from '../redux/cartSlice'
 import { setPage } from '../redux/newBooksSlice'
-import { NewBookResponse } from '../interfeces/redux'
+import { NewBookResponse } from '../types/interfeces/redux'
 
 // Hendlers
 function toggleFavorite(event: React.MouseEvent<HTMLDivElement>, dispatch: Dispatch, favoritesBooks: NewBookResponse[]): void {

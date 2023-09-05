@@ -9,7 +9,7 @@ import { Loading } from '../../components/Loading'
 import { Error } from '../../components/Error'
 import { Book } from '../../components/Book'
 
-export const SearchPage: React.FC = () => {
+export const Search: React.FC = () => {
   const dispatch = useAppDispatch()
   const { newBooks, loading, error, searchQuery } = useAppSelector(state => state.newBooks)
   const foundedBooks = newBooks.filter(book => book.title.toLowerCase().includes(searchQuery.toLowerCase()))
