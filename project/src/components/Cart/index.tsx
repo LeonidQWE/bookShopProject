@@ -13,9 +13,9 @@ export function Cart({ data }: CartProps): JSX.Element {
         <h3 className="basket-book__title">{data.title}</h3>
         <p className="basket-book__description">{data.authors}, {data.publisher} {data.year}</p>
         <div>
-          <button data-role="decrement" data-isbn13={data.isbn13} className="basket-book__button">-</button>
+          <button data-role="decrement" data-id={data.isbn13} className="basket-book__button">-</button>
           <span className="basket-book__count">{data.count}</span>
-          <button data-role="increment" data-isbn13={data.isbn13} className="basket-book__button">+</button>
+          <button data-role="increment" data-id={data.isbn13} className="basket-book__button">+</button>
         </div>
       </div>
 
@@ -24,7 +24,7 @@ export function Cart({ data }: CartProps): JSX.Element {
       </div>
 
       <div className="basket-book__delete">
-        <img data-role="delete" data-isbn13={data.isbn13} src={deleteButton} alt="" />
+        <img className="basket-book__button" data-role="delete" data-id={data.isbn13} src={deleteButton} alt="" />
       </div>
     </div>
   )

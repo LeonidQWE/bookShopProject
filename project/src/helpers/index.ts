@@ -7,10 +7,10 @@ import { NewBookResponse } from '../types/interfeces/redux'
 // Hendlers
 function toggleFavorite(event: React.MouseEvent<HTMLDivElement>, dispatch: Dispatch, favoritesBooks: NewBookResponse[]): void {
   const target = event.target as HTMLElement
-  const { role, isbn13 } = target.dataset
+  const { role, id } = target.dataset
 
   if (role === 'favorite') {
-    const book = favoritesBooks.find((book) => book.isbn13 === isbn13)
+    const book = favoritesBooks.find((book) => book.isbn13 === id)
 
     if (book) {
       const updateBook = { ...book, favorite: !book.favorite }
@@ -21,20 +21,20 @@ function toggleFavorite(event: React.MouseEvent<HTMLDivElement>, dispatch: Dispa
 
 function updateBasketBooks(event: React.MouseEvent<HTMLDivElement>, dispatch: Dispatch, basketBooks: NewBookResponse[]): void {
   const target = event.target as HTMLElement
-  const { role, isbn13 } = target.dataset
+  const { role, id } = target.dataset
 
   if (role === 'decrement') {
-    const updatedBasketBooks = doDecrementBasketBook(basketBooks, isbn13)
+    const updatedBasketBooks = doDecrementBasketBook(basketBooks, id)
     dispatch(setBasketBooks(updatedBasketBooks))
   }
 
   if (role === 'increment') {
-    const updatedBasketBooks = doIncrementBasketBook(basketBooks, isbn13)
+    const updatedBasketBooks = doIncrementBasketBook(basketBooks, id)
     dispatch(setBasketBooks(updatedBasketBooks))
   }
 
   if (role === 'delete') {
-    const updatedBasketBooks = deleteBasketBook(basketBooks, isbn13)
+    const updatedBasketBooks = deleteBasketBook(basketBooks, id)
     dispatch(setBasketBooks(updatedBasketBooks))
   }
 }

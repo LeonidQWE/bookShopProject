@@ -21,9 +21,9 @@ export function SingleBook(): JSX.Element {
   const dispatch = useAppDispatch()
   const {bookWithDetails, loadingDetails, errorDetails} = useAppSelector(state => state.bookWithDetails)
   const { newBooks } = useAppSelector(state => state.newBooks)
-  const { isbn13 } = useParams()
+  const { id } = useParams()
   const [email, setEmail] = useState('')
-  const bookId: string | undefined = isbn13
+  const bookId: string | undefined = id
 
   const { basketBooks } = useAppSelector(state => state.basketBooks)
 

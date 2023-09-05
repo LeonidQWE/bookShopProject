@@ -1,14 +1,14 @@
 import { createSlice, createAction, PayloadAction } from '@reduxjs/toolkit'
 import { put } from 'redux-saga/effects'
-import { requestBookByIsbn13 } from '../services/books'
+import { requestBookById } from '../services/books'
 
 import { BookResponse, BookState } from '../types/interfeces/redux'
 
-export function* getBookSaga({ payload: isbn13}: PayloadAction<string>) {
+export function* getBookSaga({ payload: id}: PayloadAction<string>) {
   yield put(setLoading(true))
 
   try {
-    const payload: BookResponse = yield requestBookByIsbn13(isbn13)
+    const payload: BookResponse = yield requestBookById(id)
     yield put(getBookSucces(payload))
   } catch (error) {
     yield put(setError(error))

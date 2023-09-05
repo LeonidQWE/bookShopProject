@@ -10,7 +10,7 @@ export function Book({ data }: BookProps): JSX.Element {
   return (
     <div className="book" >
       <div className="book__preview">
-        <img className="book__favorite" src={data.favorite ? activeFavorite : mutedFavorite} alt="" data-role="favorite" data-isbn13={data.isbn13} />
+        <img className="book__favorite" src={data.favorite ? activeFavorite : mutedFavorite} alt="" data-role="favorite" data-id={data.isbn13} />
         <img className="book__image" src={data.image} alt="" />
       </div>
       <div>
