@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 
-export function AuthOptions(): JSX.Element {
+export function AuthTabs(): JSX.Element {
   return (
     <div className="auth-options">
       <NavLink to="/user_page/autorization/sign_in" className="auth-options__variant">sign in</NavLink>

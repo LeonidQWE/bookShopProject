@@ -1,11 +1,11 @@
 import { Outlet } from 'react-router-dom'
 
-import { AuthOptions } from '../../components/AuthOptions'
+import { AuthTabs } from '../../components/AuthTabs'
 
 export function Autorization () {
   return (
     <>
-      <AuthOptions/>
+      <AuthTabs/>
       <Outlet/>
     </>
   )

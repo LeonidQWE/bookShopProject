@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { FormInput } from '../../components/FormInput'
 import { Button } from '../../components/Button'
-import { LinkMessage } from '../../components/LinkMessage'
+import { Link } from '../../components/Link'
 import { UserForm } from '../../components/UserForm'
 
 export function SignIn(): JSX.Element {
@@ -34,9 +34,9 @@ export function SignIn(): JSX.Element {
         htmlFor="signInPassword"
         value={password}
         onChange={(e) => setPassword(e.target.value)}>Password</FormInput>
-      <LinkMessage
+      <Link
         to="/user_page/reset_password"
-        className="link-element__text">Forgot password ?</LinkMessage>
+        className="link-element__text">Forgot password ?</Link>
       <Button variant="big" type="submit">Sign In</Button>
     </UserForm>
   )
