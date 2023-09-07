@@ -22,7 +22,7 @@ const cartSlice = createSlice({
         return acc;
       }, []);
       state.basketBooks = result
-      setDataInLocalStorage("basketBooks", state.basketBooks)
+      setDataInLocalStorage('basketBooks', state.basketBooks)
     },
   }
 })

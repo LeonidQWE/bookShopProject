@@ -8,8 +8,8 @@ export const fetchNewBooks = createAsyncThunk( 'newBooks/fetchNewBooks', async (
   const listById = books.map((book) => book.isbn13)
   const bookDetailsPromises = listById.map((isbn13) => requestBookById(isbn13))
   const bookDetails = await Promise.all(bookDetailsPromises)
-  const bookDetailsWithFavorite = bookDetails.map((book) => ({ ...book, favorite: false, count: 0 }))
-  return bookDetailsWithFavorite as NewBookResponse[]
+  const newBooksWithDetails = bookDetails.map((book) => ({ ...book, favorite: false, count: 0 }))
+  return newBooksWithDetails as NewBookResponse[]
 })
 
 const newBooksSlice = createSlice({
